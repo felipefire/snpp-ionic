@@ -1,8 +1,10 @@
 <ion-app>
+
   <ion-menu contentId="contenido">
+    <ion-img src="assets/indice.jpeg" style="width: 200px;" ></ion-img>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menú</ion-title>
+        <ion-title > <strong>MENU</strong> </ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -15,16 +17,46 @@
       </ion-menu-toggle>
       <ion-menu-toggle>
         <ion-item button routerLink="proyectos" routerLinkActive="seleccionado">
-          <ion-icon name="book" slot="start"></ion-icon>
+          <ion-icon name="albums" slot="start"></ion-icon>
           <ion-label>Proyectos</ion-label>
         </ion-item>
       </ion-menu-toggle>
+
       <ion-menu-toggle>
         <ion-item button routerLink="autores" routerLinkActive="seleccionado">
           <ion-icon name="people" slot="start"></ion-icon>
           <ion-label>Autores</ion-label>
         </ion-item>
       </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="tecnicaturas" routerLinkActive="seleccionado">
+          <ion-icon name="school" slot="start"></ion-icon>
+          <ion-label>Tecnicaturas</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="cohorte" routerLinkActive="seleccionado">
+          <ion-icon name="hourglass" slot="start"></ion-icon>
+          <ion-label>Cohorte</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="administrador" routerLinkActive="seleccionado">
+          <ion-icon name="person-circle" slot="start"></ion-icon>
+          <ion-label>Administrador</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="usuario" routerLinkActive="seleccionado">
+          <ion-icon name="people-circle" slot="start"></ion-icon>
+          <ion-label>Usuario</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
       </ion-list>
     </ion-content>   
   </ion-menu>

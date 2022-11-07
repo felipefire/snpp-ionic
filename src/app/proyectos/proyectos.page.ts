@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonRefresher, ToastController } from '@ionic/angular';
 
-import { Proyecto } from '../interfaces/proyecto.interface';
+import { Proyecto } from '../interfaces/proyectos.interface';
 import { ProyectosService } from '../servicios/proyectos.service';
 
 @Component({
@@ -23,9 +23,9 @@ export class ProyectosPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cargarLibros();
+    this.cargarProyectos();
   }
-  public cargarLibros(){
+  public cargarProyectos(){
     this.refresher?.complete();
     this.cargandoProyectos = true;
     this.servicioProyectos.get().subscribe({

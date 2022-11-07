@@ -11,26 +11,30 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'tesinas',
-    loadChildren: () => import('./tesinas/tesinas.module').then( m => m.TesinasPageModule)
-  },
+  
   {
     path: 'proyectos',
     loadChildren: () => import('./proyectos/proyectos.module').then( m => m.ProyectosPageModule)
   },
   {
-    path: 'autor',
-    loadChildren: () => import('./autor/autor.module').then( m => m.AutorPageModule)
+    path: 'autores',
+    loadChildren: () => import('./autores/autor.module').then( m => m.AutorPageModule)
   },
   {
-    path: 'servicios',
-    loadChildren: () => import('./servicios/servicios.module').then( m => m.ServiciosPageModule)
+    path: 'tecnicaturas',
+    loadChildren: () => import('./tecnicaturas/tecnicaturas.module').then( m => m.TecnicaturasPageModule)
   },
   {
-    path: 'proyectos',
-    loadChildren: () => import('./proyectos/proyectos.module').then( m => m.ProyectosPageModule)
+    path: 'usuario',
+    loadChildren: () => import('./usuario/usuario.module').then( m => m.UsuarioPageModule)
   },
+  
+  {
+    path: 'cohorte',
+    loadChildren: () => import('./cohorte/cohorte.module').then( m => m.CohortePageModule)
+  },
+  
+  
 ];
 
 @NgModule({
