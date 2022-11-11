@@ -1,20 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule, ToastController } from '@ionic/angular';
 
 import { ProyectosPageRoutingModule } from './proyectos-routing.module';
 
 import { ProyectosPage } from './proyectos.page';
+import { FormularioProyectoComponent } from './formulario-proyecto/formulario-proyecto.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProyectosPageRoutingModule
+    ProyectosPageRoutingModule,
+    ReactiveFormsModule,
+    ProyectosPage,
+    FormularioProyectoComponent,
   ],
-  declarations: [ProyectosPage]
+  declarations: [ProyectosPage, FormularioProyectoComponent],
+  providers:[
+    ToastController,
+    AlertController
+  ]
 })
-export class ProyectosPageModule {}
+export class LibrosPageModule {}

@@ -5,4 +5,5 @@ export interface Proyecto{
     idautores: string | null;
     paginas: number | null;
     idtecnicatura: string | null;
+  
 }

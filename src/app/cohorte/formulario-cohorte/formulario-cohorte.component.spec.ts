@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AutoresPage } from './autor.page';
+import { FormularioCohorteComponent } from './formulario-cohorte.component';
 
-describe('AutoresPage', () => {
-  let component: AutoresPage;
-  let fixture: ComponentFixture<AutoresPage>;
+describe('FormularioCohorteComponent', () => {
+  let component: FormularioCohorteComponent;
+  let fixture: ComponentFixture<FormularioCohorteComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AutoresPage ],
+      declarations: [ FormularioCohorteComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AutoresPage);
+    fixture = TestBed.createComponent(FormularioCohorteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -22,4 +22,3 @@ describe('AutoresPage', () => {
     expect(component).toBeTruthy();
   });
 });
-;

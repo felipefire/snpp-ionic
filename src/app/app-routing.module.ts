@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'autores',
-    loadChildren: () => import('./autores/autor.module').then( m => m.AutorPageModule)
+    loadChildren: () => import('./autores/autor.module').then( m => m.AutoresPageModule)
   },
   {
     path: 'tecnicaturas',

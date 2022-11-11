@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AutoresPage } from './autor.page';
+import { FormularioTecnicaturasComponent } from './formulario-tecnicaturas.component';
 
-describe('AutoresPage', () => {
-  let component: AutoresPage;
-  let fixture: ComponentFixture<AutoresPage>;
+describe('FormularioTecnicaturasComponent', () => {
+  let component: FormularioTecnicaturasComponent;
+  let fixture: ComponentFixture<FormularioTecnicaturasComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AutoresPage ],
+      declarations: [ FormularioTecnicaturasComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AutoresPage);
+    fixture = TestBed.createComponent(FormularioTecnicaturasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -22,4 +22,3 @@ describe('AutoresPage', () => {
     expect(component).toBeTruthy();
   });
 });
-;

@@ -1,33 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
-import { Autor } from 'src/app/interfaces/autor.interface';
+import { Autores } from 'src/app/interfaces/autores.interface';
+import { Proyecto } from 'src/app/interfaces/proyectos.interface';
 import { AutoresService } from 'src/app/servicios/autores.service';
+import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
 @Component({
-  selector: 'app-formulario-proyecto',
-  templateUrl: './formulario-proyecto.component.html',
-  styleUrls: ['./formulario-proyecto.component.scss'],
+  selector: 'app-formulario-Proyecto',
+  templateUrl: './formulario-Proyecto.component.html',
+  styleUrls: ['./formulario-Proyecto.component.scss'],
 })
 export class FormularioProyectoComponent implements OnInit {
 
-  public listaAutores: Autor[] = [];
+  @Output()
+  recargar = new EventEmitter<boolean>();
 
-  public id: number | null = null;
-  public titulo: string | null = null;
-  public idautor: number| null = null;
-  public paginas: number | null = null;
+  public modo: "Registrar" | "Editar" = "Registrar";
 
-  public idValidado: boolean = true;
-  public tituloValidado: boolean = true;
-  public idautorValidado: boolean = true;
-  public paginasValidado: boolean = true;
+  public listaAutores: Autores[] = [];
 
+  public form: FormGroup = new FormGroup({
+    idCtrl: new FormControl<number>(null, Validators.required),
+    tituloCtrl: new FormControl<string>(null, Validators.required),
+    idautorCtrl: new FormControl<number>(null, Validators.required),
+    paginasCtrl: new FormControl<number>(null, Validators.required)
+  });
 
   constructor(
     private servicioAutores: AutoresService,
-    private servivioToast: ToastController 
+    private servicioToast: ToastController,
+    private servicioProyecto: ProyectosService,
   ) { }
-
+ 
   private cargarAutores(){
   this.servicioAutores.get().subscribe({
     next: (autores) => {
@@ -35,7 +40,7 @@ export class FormularioProyectoComponent implements OnInit {
     },
     error: (e) => {
       console.error('Error al cargar Autores', e);
-      this.servivioToast.create({
+      this.servicioToast.create({
         header: 'Error al cargar Autores',
         message: e.error,
         color:'danger'
@@ -49,16 +54,76 @@ export class FormularioProyectoComponent implements OnInit {
   }
 
   guardar(){
-    this.validar();
+    this.form.markAllAsTouched();
+    if(this.form.valid){
+      if(this.modo === 'Registrar'){
+      this.registrar();
+      }else{
+        this.editar();
+      }
+    }
   }
 
-  private validar(): boolean{
-    this.idValidado = this.id !== null;
-    this.tituloValidado = this.titulo !== null && this.titulo.length > 0;
-    this.idautorValidado = this.idautor !== null;
-    this.paginasValidado = this.paginas !== null && this.paginas > 0;
-    return this.idValidado && this.tituloValidado && this.idValidado && this.paginasValidado;
-
+  private registrar(){
+    const proyecto: Proyecto = {
+      idproyecto: this.form.controls.idCtrl.value,
+      titulo: this.form.controls.tituloCtrl.value,
+      idautores: this.form.controls.idautorCtrl.value,
+      paginas: this.form.controls.paginasCtrl.value,
+      idautorCohorte: this.form.controls.idautorCohorteCtrl.value,
+      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
+     
+    }
+    this.servicioProyecto.post(proyecto).subscribe({
+      next: () => {
+        this.recargar.emit(true);
+        this.servicioToast.create({
+          header: 'Éxito',
+          message: 'Se registró correctamente el Proyecto',
+          duration: 2000,
+          color: 'success'
+        }).then (t => t.present());
+      },
+      error: (e) => {
+        console.error('Error al registrar el Proyecto', e);
+        this.servicioToast.create({
+          header: 'Error al registrar',
+          message: e.message,
+          duration: 3500,
+          color: 'danger'
+        }).then(t=> t.present())
+      }
+    })
   }
 
+  private editar(){
+    const proyecto: Proyecto = {
+      idproyecto: this.form.controls.idCtrl.value,
+      titulo: this.form.controls.tituloCtrl.value,
+      idautores: this.form.controls.idautorCtrl.value,
+      paginas: this.form.controls.paginasCtrl.value,
+      idautorCohorte: this.form.controls.idautorCohorteCtrl.value,
+      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
+    }
+    this.servicioProyecto.put(proyecto).subscribe({
+      next: () => {
+        this.recargar.emit(true);
+        this.servicioToast.create({
+          header: 'Éxito',
+          message: 'Se editó correctamente el Proyecto',
+          duration: 2000,
+          color: 'success'
+        }).then (t => t.present());
+      },
+      error: (e) => {
+        console.error('Error al editar el Proyecto', e);
+        this.servicioToast.create({
+          header: 'Error al editar',
+          message: e.message,
+          duration: 3500,
+          color: 'danger'
+        }).then(t=> t.present())
+      }
+    })
+  }
 }

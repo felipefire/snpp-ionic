@@ -6,16 +6,15 @@ import { IonicModule } from '@ionic/angular';
 
 import { AutoresPageRoutingModule } from './autor-routing.module';
 
-import { AutorPage } from './autor.page';
+import { AutoresPage } from './autor.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AutoresPageRoutingModule,
-    AutorPage,
+    AutoresPageRoutingModule
   ],
-  declarations: [AutorPage]
+  declarations: [AutoresPage]
 })
-export class AutorPageModule {}
+export class AutoresPageModule {}
