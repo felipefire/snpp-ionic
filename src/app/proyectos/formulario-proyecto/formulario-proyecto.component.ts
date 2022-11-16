@@ -8,8 +8,8 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
 @Component({
   selector: 'app-formulario-Proyecto',
-  templateUrl: './formulario-Proyecto.component.html',
-  styleUrls: ['./formulario-Proyecto.component.scss'],
+  templateUrl: './formulario-proyecto.component.html',
+  styleUrls: ['./formulario-proyecto.component.scss'],
 })
 export class FormularioProyectoComponent implements OnInit {
 

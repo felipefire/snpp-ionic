@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlertController, IonicModule, ToastController } from '@ionic/angular';
 
-import { ProyectosPageRoutingModule } from './proyectos-routing.module';
+import { ProyectosPageRoutingModule, } from './proyectos-routing.module';
 
 import { ProyectosPage } from './proyectos.page';
 import { FormularioProyectoComponent } from './formulario-proyecto/formulario-proyecto.component';
@@ -18,6 +18,7 @@ import { FormularioProyectoComponent } from './formulario-proyecto/formulario-pr
     ReactiveFormsModule,
     ProyectosPage,
     FormularioProyectoComponent,
+    
   ],
   declarations: [ProyectosPage, FormularioProyectoComponent],
   providers:[
@@ -25,4 +26,4 @@ import { FormularioProyectoComponent } from './formulario-proyecto/formulario-pr
     AlertController
   ]
 })
-export class LibrosPageModule {}
+export class ProyectosPageModule {}

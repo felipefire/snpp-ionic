@@ -8,7 +8,7 @@ import { Proyecto } from '../interfaces/proyectos.interface';
 })
 export class ProyectosService {
 
-  url: string = "http://localhost:3000/Proyecto";
+  url: string = "http://localhost:3000/proyecto";
 
   constructor(
     private http: HttpClient

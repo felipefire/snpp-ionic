@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
-
+import { IonicModule, AlertController, ToastController } from '@ionic/angular';
+import { FormularioCohorteComponent } from './formulario-cohorte/formulario-cohorte.component';
 import { CohortePageRoutingModule } from './cohorte-routing.module';
 
 import { CohortePage } from './cohorte.page';
@@ -13,8 +13,13 @@ import { CohortePage } from './cohorte.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CohortePageRoutingModule
+    CohortePageRoutingModule,
+    FormularioCohorteComponent
   ],
-  declarations: [CohortePage]
+  declarations: [CohortePage, FormularioCohorteComponent],
+  providers:[
+    ToastController,
+    AlertController
+  ]
 })
 export class CohortePageModule {}

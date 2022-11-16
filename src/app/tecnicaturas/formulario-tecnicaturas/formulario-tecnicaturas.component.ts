@@ -24,7 +24,7 @@ export class FormularioTecnicaturasComponent implements OnInit {
 
   constructor(
     private servicioTecnicaturas: TecnicaturasService,
-    private servivioToast: ToastController 
+    private servicioToast: ToastController 
   ) { }
 
   private cargarTecnicaturas(){
@@ -34,7 +34,7 @@ export class FormularioTecnicaturasComponent implements OnInit {
     },
     error: (e) => {
       console.error('Error al cargar la Tecnicatura', e);
-      this.servivioToast.create({
+      this.servicioToast.create({
         header: 'Error al cargar la Tecnicatura',
         message: e.error,
         color:'danger'

@@ -1,3 +1,25 @@
-<p>
-  formulario-cohorte works!
-</p>
+<ion-list>
+  <ion-item>
+    <ion-label>Cohorte:</ion-label>
+    <ion-select placeholder="Seleccionar..." [(ngModel)]="idcohorte">
+    <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.id">{{cohorte.nombre}}</ion-select-option>
+  </ion-select>  
+  <ion-note *ngIf="!idcohorteValidado" slot="helper" color="danger">Seleccione un cohorte </ion-note>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Tecnicatura:</ion-label>
+    <ion-select placeholder="Seleccionar..." [(ngModel)]="idtecnicatura">
+    <ion-select-option *ngFor="let tecnicatura of listaTecnicatura" [value]="tecnicatura.id">{{tecnicatura.nombre}}</ion-select-option>
+  </ion-select>  
+  <ion-note *ngIf="!idtecnicaturaValidado" slot="helper" color="danger">Seleccionar una Tecnicatura </ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label>Años:</ion-label>
+    <ion-input inputmode="number" placeholder="Ingresar..." slot="end" [(ngModel)]="años"></ion-input>
+    <ion-note *ngIf="!añosValidado" slot="helper" color="danger">Ingrese el año de cohorte</ion-note>
+  </ion-item>
+</ion-list>
+<ion-button expand="full" (click)="guardar()">
+  <ion-icon name="save" slot="start"></ion-icon>
+</ion-button>

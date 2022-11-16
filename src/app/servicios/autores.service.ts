@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Autor } from '../interfaces/autores.interface';
+import { Autores } from '../interfaces/autores.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AutoresService {
     private http: HttpClient
   ) { }
 
-  public get(): Observable<Autor[]>{
-    return this.http.get<Autor[]>(this.url);
+  public get(): Observable<Autores[]>{
+    return this.http.get<Autores[]>(this.url);
   }
 }

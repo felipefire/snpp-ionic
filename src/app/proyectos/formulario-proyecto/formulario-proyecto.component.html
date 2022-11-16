@@ -10,7 +10,7 @@
     <ion-note *ngIf="!tituloValidado" slot="helper" color="danger">Ingrese un titulo</ion-note>
   </ion-item>
   <ion-item>
-    <ion-label>Autor:</ion-label>
+    <ion-label>Autores:</ion-label>
     <ion-select placeholder="Seleccionar..." [(ngModel)]="idautor">
     <ion-select-option *ngFor="let autor of listaAutores" [value]="autor.id">{{autor.nombre}}</ion-select-option>
   </ion-select>  

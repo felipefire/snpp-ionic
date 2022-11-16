@@ -1,25 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonRefresher, ToastController } from '@ionic/angular';
-
+import { AlertController, IonRefresher, ToastController } from '@ionic/angular';
+import { FormularioProyectoComponent } from './formulario-proyecto/formulario-proyecto.component';
 import { Proyecto } from '../interfaces/proyectos.interface';
 import { ProyectosService } from '../servicios/proyectos.service';
+
 
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.page.html',
   styleUrls: ['./proyectos.page.scss'],
 })
+
+
 export class ProyectosPage implements OnInit {
 
   @ViewChild(IonRefresher) refresher: IonRefresher;
+  @ViewChild(FormularioProyectoComponent) formularioProyecto!: FormularioProyectoComponent;
 
    public listaProyectos: Proyecto[]=[]; 
    public cargandoProyectos: boolean = false;
    public modalVisible: boolean = false;
 
+   private proyectoSeleccionado: Proyecto | null = null;
+   public modoFormulario: 'Registrar' | 'Editar' = 'Registrar';
+
   constructor(
     private servicioProyectos: ProyectosService,
-    private servicioToast: ToastController
+    private servicioToast: ToastController,
+    private servicioAlert: AlertController
   ) { }
 
   ngOnInit() {
@@ -48,7 +56,70 @@ export class ProyectosPage implements OnInit {
   }
 
   public nuevo(){
+    this.modoFormulario = "Registrar";
+    this.proyectoSeleccionado = null;
     this.modalVisible = true;
   }
 
+  public editar(proyecto: Proyecto){
+    this.proyectoSeleccionado = proyecto;
+    this.modoFormulario = 'Editar';
+    this.modalVisible = true;
+  }
+
+  public cargarDatosEditar(){
+  if(this.modoFormulario === 'Editar') {
+    this.formularioProyecto.modo = this.modoFormulario;
+    this.formularioProyecto.form.controls.idproyectoCtrl.setValue(this.proyectoSeleccionado.idproyecto);
+    this.formularioProyecto.form.controls.tituloCtrl.setValue(this.proyectoSeleccionado.titulo);
+    this.formularioProyecto.form.controls.idautorCtrl.setValue(this.proyectoSeleccionado.idautores);
+    this.formularioProyecto.form.controls.paginasCtrl.setValue(this.proyectoSeleccionado.paginas);
+    this.formularioProyecto.form.controls.idautorCohorteCtrl.setValue(this.proyectoSeleccionado.idautorCohorte);
+    this.formularioProyecto.form.controls.idtecnicaturaCtrl.setValue(this.proyectoSeleccionado.idtecnicatura);
+
+
+    }  
+  }
+
+  public confirmarEliminacion(proyecto: Proyecto){
+    this.servicioAlert.create({
+      header: 'Confirmar eliminación',
+      subHeader: '¿Realmente desea eliminar el Proyecto?',
+      message: `${proyecto.idproyecto} - ${proyecto.titulo} (${proyecto.idautores})`,
+      buttons:[
+        {
+          text: 'Cancelar',          
+        },
+        {
+          text: 'Eliminar',       
+          handler: () => this.eliminar(proyecto)           
+        }
+      ]
+    }).then(a =>a.present());
+  }
+
+  private eliminar (proyecto: Proyecto){
+    this.servicioProyectos.delete(proyecto).subscribe({
+      next: () => {
+        this.cargarProyectos();
+        this.servicioToast.create({
+          header: 'Exito',
+          message: 'El Proyecto se eliminó correctamente',
+          duration: 2000,
+          position: 'bottom',
+          color:'success'
+        }).then(t => t.present());
+      },
+      error: (e) => {
+        console.error('Error al eliminar el Proyecto', e);
+        this.servicioToast.create({
+          header: 'Error al eliminar',
+          message: e.message,
+          duration:3000,
+          position: 'bottom',
+          color: 'danger'
+        }).then(toast => toast.present());            
+       }
+    });
+  }
 }
