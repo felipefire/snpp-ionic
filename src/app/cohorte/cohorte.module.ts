@@ -14,7 +14,8 @@ import { CohortePage } from './cohorte.page';
     FormsModule,
     IonicModule,
     CohortePageRoutingModule,
-    FormularioCohorteComponent
+    FormularioCohorteComponent,
+    ReactiveFormsModule,
   ],
   declarations: [CohortePage, FormularioCohorteComponent],
   providers:[

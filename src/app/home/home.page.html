@@ -1,17 +1,247 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-slide>
+      <ion-img class="imagenportada" src="assets/cab.jpeg.jpg"></ion-img>
+    </ion-slide>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar color="tertiary" placeholder="Buscador"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-buttons slot="start" style="height: 50px;">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-    Inicio
+
+
+
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
-  <div id="container">
-    <strong>Bienvenido...</strong>
-  </div>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-img class="imagenportada" src="assets/icon/ITS.png"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-img class="imagenportada" src="assets/icon/FUO1.jpeg"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-img class="imagenportada" src="assets/icon/FUO.jpeg"></ion-img>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col>
+        <ion-card style="color: cornflowerblue;">
+          <div [routerLink]="['/autores']" routerLinkActive="router-link-active"
+            style="border-color:darkgrey; border-width: 1px; border-style: solid; width: 200px; height: 200px;">
+            <ion-icon name="people-outline" slot="auto"
+              style="border-width: 1px; border-style: solid; width: 150px; height: 150px;"></ion-icon>
+            <ion-label><strong>Autores</strong></ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card style="color: cornflowerblue;">
+          <div [routerLink]="['/proyectos']" routerLinkActive="router-link-active"
+            style="border-color:darkgrey; border-width: 1px; border-style: solid; width: 200px; height: 200px;">
+            <ion-icon name="albums-outline" slot="auto"
+              style="border-width: 1px; border-style: solid; width: 150px; height: 150px;"></ion-icon>
+            <ion-label><strong>Proyectos</strong></ion-label>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="color: cornflowerblue;">
+
+          <div [routerLink]="['/tecnicaturas']" routerLinkActive="router-link-active"
+            style="border-color:darkgrey; border-width: 1px; border-style: solid; width: 200px; height: 200px;">
+            <ion-icon name="school-outline" slot="auto"
+              style="border-width: 1px; border-style: solid; width: 150px; height: 150px;"></ion-icon>
+            <ion-label><strong>Tecnicaturas</strong></ion-label>
+          </div>
+
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="color: cornflowerblue;">
+
+          <div [routerLink]="['/cohorte']" routerLinkActive="router-link-active"
+            style="border-color:darkgrey; border-width: 1px; border-style: solid; width: 200px; height: 200px;">
+            <ion-icon name="newspaper-outline" slot="auto"
+              style="border-width: 1px; border-style: solid; width: 150px; height: 150px;"></ion-icon>
+            <ion-label><strong>Cohorte</strong></ion-label>
+          </div>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card style="color: cornflowerblue;">
+
+          <div [routerLink]="['/usuario']" routerLinkActive="routerLink"
+            style="border-color:darkgrey; border-width: 1px; border-style: solid; width: 200px; height: 200px;">
+            <ion-icon name="people-circle" slot="auto"
+              style="border-width: 1px; border-style: solid; width: 150px; height: 150px;"></ion-icon>
+            <ion-label><strong>Usuario</strong></ion-label>
+          </div>
+
+        </ion-card>
+      </ion-col>
+      <ion-footer>
+        <!--<div class="contenedor-ion-footer">-->
+        <ion-grid class="grilla-pie">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="12" size-md="4" class="content-foo">
+
+              <div class="titulo-pie" style="color: black;">Contactos SNPP </div>
+
+              <div class="content" style="color: black;">
+                <div>SEDE CORONEL OVIEDO:</div>
+                <div>Villarica e/ Lida P. Benitez- Cnel.Oviedo</div>
+                <div>Telefono:</div>
+                <div>0521 202 048</div>
+                <div>(0991) 951 863</div>
+                <div>E-mail:</div>
+                <div><a href="https://www.snppcoroneloviedo@gmail.com" ion-button> <strong style="color: black;">
+                      snppcoroneloviedo@gmail.com</strong></a>
+                </div>
+                <div><strong>Redes Sociales:</strong></div>
+                <div><a href="https://www.facebook.com/ITSCoronelOviedo/" ion-button> <strong
+                      style="color: black;">Facebook: Instituto Tecnológico Superior SNPP - JICA Coronel
+                      Oviedo</strong></a>
+                </div>
+                <div><a href="https://instagram.com/its.snpp?igshid=NDk5N2NlZjQ=" ion-button> <strong
+                      style="color: black;">Instagram: Instituto Tecnológico Superior - ITS</strong></a>
+                </div>
+              </div>
+
+            </ion-col>
+            <ion-col size="12" size-md="4" class="content-foo">
+
+              <div style="color: black;" class="titulo-pie">Contactos MTESS-SINAFOCAL </div>
+
+              <div style="color: black;" class="content">
+                <div><strong>MTESS:</strong></div>
+                <div>Direccion: Herrera e/Paraguari</div>
+                <div>Central de Llamadas: 0800 11 73 00</div>
+                <div><strong>SINAFOCAL:</strong></div>
+                <div>Direccion: Iturbe 175, Eligio Ayala-Asuncion</div>
+                <div>Telefono: (+59521) 495 487/8</div>
+                <div><a href="https://www.info@sinafocal.gov.py" ion-button> <strong style="color: black;"> E-mail:
+                      info@sinafocal.gov.py</strong></a>
+                </div>
+
+
+              </div>
+            </ion-col>
+            <ion-col size="12" size-md="4" class="content-foo">
+
+              <div style="color: black;" class="titulo-pie">Enlaces de Interes</div>
+
+              <div class="content">
+
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="https://www.snpp.edu.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Servicio Nacional de Promocion Profesional</strong> </a>
+                </div>
+
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon><a href="http://www.mtess.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;">Ministerio de Trabajo, Empleo y Seguridad Social</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon><a href="http://www.presidencia.gov.py/"
+                    ion-button> <strong style="color: darkslategrey;">Presidencia de la Republica del Paraguay</strong>
+                  </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.sas.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Secretaria de Accion Social - SAS</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.sfp.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Secretaria de la Funcion Publica -SFP</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.stp.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Secretaria Tecnica de Planificacion del Desarrollo Economico
+                      y Social - STP</strong> </a>
+                </div>
+
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.senatics.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Secretaria Nacional de Tecnologias de la Informacion y
+                      Comunicacion - SENATICS</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.hacienda.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Ministerio de Hacienda - MH</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.mic.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;"> Ministerio de Industria y Comercio - MIC</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.snj.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;">Secretaria Nacional de la Juventud - SNJ </strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://www.senac.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;">Secretaria Nacional Anticorrupcion - SENAC</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="http://sinafocal.gov.py/" ion-button>
+                    <strong style="color: darkslategrey;">Sistema Nacional de Formacion y Capacitacion Laboral -
+                      SINAFOCAL</strong> </a>
+                </div>
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="https://www.mec.gov.py/cms/" ion-button>
+                    <strong style="color: darkslategrey;"> Ministerio de Educacion y Ciencias - MEC</strong> </a>
+                </div>
+
+
+                <div style="color: black;">
+                  <ion-icon name="radio-button-on-outline"></ion-icon> <a href="https://www.mspbs.gov.py/portal"
+                    ion-button> <strong style="color: darkslategrey;"> Ministerio de Salud Publica y Bienestar Social -
+                      MSPBS</strong> </a>
+                </div>
+
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+
+        <!--</div>-->
+        <h2 style="color: black;" class="titulo-final">&copy; Página web oficial Servicio Nacional de Promocion
+          Profesional sede Coronel Oviedo</h2>
+      </ion-footer>
+
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
- 

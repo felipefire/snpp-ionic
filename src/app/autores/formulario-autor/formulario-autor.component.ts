@@ -1,17 +1,18 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {FormControl, FormGroup,Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Autores } from 'src/app/interfaces/autores.interface';
-import { Proyecto } from 'src/app/interfaces/proyectos.interface';
+
 import { AutoresService } from 'src/app/servicios/autores.service';
-import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
 @Component({
-  selector: 'app-formulario-proyecto',
-  templateUrl: './formulario-proyecto.component.html',
-  styleUrls: ['./formulario-proyecto.component.scss'],
+  selector: 'app-formulario-autor',
+  templateUrl: './formulario-autor.component.html',
+  styleUrls: ['./formulario-autor.component.scss'],
 })
-export class FormularioProyectoComponent implements OnInit {
+export class FormularioAutorComponent implements OnInit {
+
+  
 
   @Output()
   recargar = new EventEmitter<boolean>();
@@ -24,13 +25,13 @@ export class FormularioProyectoComponent implements OnInit {
     idCtrl: new FormControl<number>(null, Validators.required),
     tituloCtrl: new FormControl<string>(null, Validators.required),
     idautorCtrl: new FormControl<number>(null, Validators.required),
-    paginasCtrl: new FormControl<number>(null, Validators.required)
+    paginasCtrl: new FormControl<number>(null, Validators.required),
+    nombreAutores: new FormControl<string>(null,Validators.required),
   });
 
   constructor(
     private servicioAutores: AutoresService,
     private servicioToast: ToastController,
-    private servicioProyecto: ProyectosService,
   ) { }
  
   private cargarAutores(){
@@ -39,9 +40,9 @@ export class FormularioProyectoComponent implements OnInit {
       this.listaAutores = autores;
     },
     error: (e) => {
-      console.error('Error al cargar Autores', e);
+      console.error('Error al cargar Autor', e);
       this.servicioToast.create({
-        header: 'Error al cargar Autores',
+        header: 'Error al cargar Autor',
         message: e.error,
         color:'danger'
       })
@@ -65,21 +66,22 @@ export class FormularioProyectoComponent implements OnInit {
   }
 
   private registrar(){
-    const proyecto: Proyecto = {
-      idproyecto: this.form.controls.idCtrl.value,
-      titulo: this.form.controls.tituloCtrl.value,
-      idautores: this.form.controls.idautorCtrl.value,
-      paginas: this.form.controls.paginasCtrl.value,
-      idautorCohorte: this.form.controls.idautorCohorteCtrl.value,
-      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
+    const autor: Autores = {
+      
+      
+      idAutores: this.form.controls.idautorCtrl.value,
+      años: this.form.controls.añosCtrl.value,
+      ciAutores: this.form.controls.ciAutoresCtrl.value,
+      ApellidoAutores: this.form.controls.apellidoAutoresCtrl.value,
+     nombreAutores: this.form.controls.apellidoAutoresCtrl.value
      
     }
-    this.servicioProyecto.post(proyecto).subscribe({
+    this.servicioAutores.post(autor).subscribe({
       next: () => {
         this.recargar.emit(true);
         this.servicioToast.create({
           header: 'Éxito',
-          message: 'Se registró correctamente el Proyecto',
+          message: 'Se registró correctamente el Autor',
           duration: 2000,
           color: 'success'
         }).then (t => t.present());
@@ -97,26 +99,26 @@ export class FormularioProyectoComponent implements OnInit {
   }
 
   private editar(){
-    const proyecto: Proyecto = {
-      idproyecto: this.form.controls.idCtrl.value,
-      titulo: this.form.controls.tituloCtrl.value,
-      idautores: this.form.controls.idautorCtrl.value,
-      paginas: this.form.controls.paginasCtrl.value,
-      idautorCohorte: this.form.controls.idautorCohorteCtrl.value,
-      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
+    const autor: Autores = {
+      idAutores: this.form.controls.idautorCtrl.value,
+      años: this.form.controls.añosCtrl.value,
+      ciAutores: this.form.controls.ciAutoresCtrl.value,
+      ApellidoAutores: this.form.controls.apellidoAutoresCtrl.value,
+     nombreAutores: this.form.controls.apellidoAutoresCtrl.value
+     
     }
-    this.servicioProyecto.put(proyecto).subscribe({
+    this.servicioAutores.put(autor).subscribe({
       next: () => {
         this.recargar.emit(true);
         this.servicioToast.create({
           header: 'Éxito',
-          message: 'Se editó correctamente el Proyecto',
+          message: 'Se editó correctamente el Autor',
           duration: 2000,
           color: 'success'
         }).then (t => t.present());
       },
       error: (e) => {
-        console.error('Error al editar el Proyecto', e);
+        console.error('Error al editar el Autor', e);
         this.servicioToast.create({
           header: 'Error al editar',
           message: e.message,

@@ -1,24 +1,29 @@
 <ion-list>
-  <ion-item>
-    <ion-label>Cohorte:</ion-label>
-    <ion-select placeholder="Seleccionar..." [(ngModel)]="idcohorte">
+
+  <ion-item fill="outline" class="item-espaciado">
+    <ion-label position="floating">Cohorte:</ion-label>
+    <ion-select formControlName="idcohorte">
     <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.id">{{cohorte.nombre}}</ion-select-option>
   </ion-select>  
-  <ion-note *ngIf="!idcohorteValidado" slot="helper" color="danger">Seleccione un cohorte </ion-note>
+  <ion-note slot="error" *ngIf="form.controls.idcohorteCtrl.touched"  color="danger">Seleccione  cohorte </ion-note>
   </ion-item>
   
-  <ion-item>
-    <ion-label>Tecnicatura:</ion-label>
-    <ion-select placeholder="Seleccionar..." [(ngModel)]="idtecnicatura">
+
+  <ion-item fill="outline" class="item-espaciado">
+    <ion-label position="floating">Tecnicatura:</ion-label>
+    <ion-select formControlName="idtecnicatura">
     <ion-select-option *ngFor="let tecnicatura of listaTecnicatura" [value]="tecnicatura.id">{{tecnicatura.nombre}}</ion-select-option>
   </ion-select>  
-  <ion-note *ngIf="!idtecnicaturaValidado" slot="helper" color="danger">Seleccionar una Tecnicatura </ion-note>
+  <ion-note slot="error" *ngIf="form.controls.idtecnicaturaCtrl.touched" color="danger">Seleccionar una Tecnicatura </ion-note>
   </ion-item>
-  <ion-item>
-    <ion-label>Años:</ion-label>
-    <ion-input inputmode="number" placeholder="Ingresar..." slot="end" [(ngModel)]="años"></ion-input>
-    <ion-note *ngIf="!añosValidado" slot="helper" color="danger">Ingrese el año de cohorte</ion-note>
+
+  <ion-item fill="outline" >
+    <ion-label position="floating">Años:</ion-label>
+    <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="añosCtrl"></ion-input>
+    <ion-note slot="error" *ngIf="form.controls.paginasCtrl.touched" color="danger">Ingrese el año de cohorte</ion-note>
   </ion-item>
+
+
 </ion-list>
 <ion-button expand="full" (click)="guardar()">
   <ion-icon name="save" slot="start"></ion-icon>

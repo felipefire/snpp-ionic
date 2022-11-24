@@ -16,9 +16,6 @@ import { FormularioProyectoComponent } from './formulario-proyecto/formulario-pr
     IonicModule,
     ProyectosPageRoutingModule,
     ReactiveFormsModule,
-    ProyectosPage,
-    FormularioProyectoComponent,
-    
   ],
   declarations: [ProyectosPage, FormularioProyectoComponent],
   providers:[

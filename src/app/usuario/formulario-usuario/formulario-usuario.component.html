@@ -1,3 +1,28 @@
-<p>
-  formulario-usuario works!
-</p>
+<ion-list>
+
+  <ion-list>
+    <ion-item fill="outline">
+      <ion-label position="floating">Código</ion-label>
+      <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="idCtrl"></ion-input>
+      <ion-note slot="error" *ngIf="form.controls.idCtrl.touched">Ingrese un código</ion-note>
+    </ion-item>
+
+  <ion-item fill="outline" class="item-espaciado">
+    <ion-label  position="floating">usuario</ion-label>
+    <ion-input inputmode="text" slot="end" placeholder="Ingresar..." formControlName="usuarioCtrl"></ion-input>
+    <ion-note slot="error" *ngIf="form.controls.tecnicaturaCtrl.touched" color="danger">Ingrese un usuario</ion-note>
+  </ion-item>
+
+  <ion-item fill="outline" class="item-espaciado">
+    <ion-label  position="floating">Autores:</ion-label>
+    <ion-select placeholder="Seleccionar..." [(ngModel)]="idautor">
+    <ion-select-option *ngFor="let autor of listaAutores" [value]="autor.id">{{autor.nombre}}</ion-select-option>
+  </ion-select>  
+  <ion-note slot="error" *ngIf="form.controls.idautorCtrl.touched" color="danger">Seleccione un autor </ion-note>
+  </ion-item>
+  <ion-item>
+   
+</ion-list>
+<ion-button expand="full" (click)="guardar()">
+  <ion-icon name="save" slot="start"></ion-icon>
+</ion-button>

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule, ToastController } from '@ionic/angular';
 
 import { TecnicaturasPageRoutingModule } from './tecnicaturas-routing.module';
-
+import { FormularioTecnicaturasComponent } from './formulario-tecnicaturas/formulario-tecnicaturas.component';
 import { TecnicaturasPage } from './tecnicaturas.page';
 
 @NgModule({
@@ -13,8 +13,13 @@ import { TecnicaturasPage } from './tecnicaturas.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TecnicaturasPageRoutingModule
+    TecnicaturasPageRoutingModule,
+    ReactiveFormsModule,
   ],
-  declarations: [TecnicaturasPage]
+  declarations: [TecnicaturasPage,FormularioTecnicaturasComponent],
+  providers: [
+    ToastController,
+    AlertController
+  ]
 })
 export class TecnicaturasPageModule {}
