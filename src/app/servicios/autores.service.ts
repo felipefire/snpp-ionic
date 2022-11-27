@@ -8,7 +8,7 @@ import { Autores } from '../interfaces/autores.interface';
 })
 export class AutoresService {
 
-  url: string = "http://localhost:3000/autor";
+  url: string = "http://localhost:3000/autores";
 
   constructor(
     private http: HttpClient

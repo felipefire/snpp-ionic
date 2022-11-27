@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Usuario} from '../interfaces/usuarios.interface';
+import {Usuarios} from '../interfaces/usuarios.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class UsuariosService {
     private http: HttpClient
   ) { }
 
-  public get(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(this.url);
+  public get(): Observable<Usuarios[]>{
+    return this.http.get<Usuarios[]>(this.url);
   }
 }

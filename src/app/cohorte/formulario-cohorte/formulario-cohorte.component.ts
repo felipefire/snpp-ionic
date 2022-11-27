@@ -20,7 +20,7 @@ export class FormularioCohorteComponent implements OnInit {
   public listaCohortes: Cohorte[] = [];
 
   public form: FormGroup = new FormGroup({
-    idcohorteCtrl: new FormControl<number>(null, Validators.required),
+    idCohorteCtrl: new FormControl<number>(null, Validators.required),
     idtecnicaturaCtrl: new FormControl<number>(null, Validators.required),
     añosCtrl: new FormControl<number>(null, Validators.required)
   });
@@ -68,7 +68,7 @@ export class FormularioCohorteComponent implements OnInit {
       titulo: this.form.controls.tituloCtrl.value,
       idautores: this.form.controls.idautorCtrl.value,
       paginas: this.form.controls.paginasCtrl.value,
-      idautorCohorte: this.form.controls.idautorCohorteCtrl.value,
+      idCohorte: this.form.controls.idCohorteCtrl.value,
       idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
      
     }
@@ -100,7 +100,7 @@ export class FormularioCohorteComponent implements OnInit {
       titulo: this.form.controls.tituloCtrl.value,
       idautores: this.form.controls.idautorCtrl.value,
       paginas: this.form.controls.paginasCtrl.value,
-      idautorCohorte: this.form.controls.idautorCohorteCtrl.value,
+      idCohorte: this.form.controls.idCohorteCtrl.value,
       idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
     }
     this.servicioProyecto.put(proyecto).subscribe({

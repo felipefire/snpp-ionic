@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Proyectos</ion-title>
-    <ion-progress-bar *ngIf="cargarProyectos" type="indeterminate"></ion-progress-bar>
+    <ion-progress-bar *ngIf="cargandoProyectos" type="indeterminate"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 
@@ -25,8 +25,8 @@
   <ion-item  button (click)="editar(proyecto)">
     <ion-note slot="start">{{proyecto.id}}</ion-note>
     <ion-label>
-      <h2>{{proyecto.titulo}}</h2>
-      <p>{{proyecto.autor}}</p>
+      <h2>{{proyecto.idproyecto}}</h2>
+      <p>{{proyecto.titulo}} {{proyecto.titulo}} {{proyecto.idAutores}}  {{proyecto.idtecnicaturas}} {{proyecto.idCohorte}} </p> 
     </ion-label>
     <ion-badge color="medium" slot="end" >{{proyecto.paginas}} pag.</ion-badge>
   </ion-item>

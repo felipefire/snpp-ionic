@@ -1,5 +1,5 @@
 export interface Cohorte{
-    idcohorte: number | null;
+    idCohorte: number | null;
     idtecnicturas: string | null;
-    años: number | null;
+    anhios: number | null;
 }

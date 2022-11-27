@@ -2,27 +2,43 @@
 
   <ion-list>
     <ion-item fill="outline">
-      <ion-label position="floating">Código</ion-label>
+      <ion-label position="floating">Código:</ion-label>
       <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="idCtrl"></ion-input>
       <ion-note slot="error" *ngIf="form.controls.idCtrl.touched">Ingrese un código</ion-note>
     </ion-item>
 
     <ion-item fill="outline" class="item-espaciado">
-      <ion-label position="floating">Titulo</ion-label>
+      <ion-label position="floating">Titulo:</ion-label>
       <ion-input inputmode="text" type="text" placeholder="Ingresar..." formControlName="tituloCtrl"></ion-input>
       <ion-note slot="error" *ngIf="form.controls.tituloCtrl.touched">Ingrese un titulo</ion-note>
     </ion-item>
 
     <ion-item fill="outline" class="item-espaciado">
-      <ion-label position="floating">Autor</ion-label>
-      <ion-select formControlName="idautorCtrl">
-        <ion-select-option *ngFor="let autor of listaAutores" [value]="autor.id">{{autor.nombre}}</ion-select-option>
+      <ion-label position="floating">Autor:</ion-label>
+      <ion-select formControlName="idAutoresCtrl">
+        <ion-select-option *ngFor="let autor of listaAutores" [value]="autor.id">{{autor.idAutores}}</ion-select-option>
       </ion-select>
-      <ion-note slot="error" *ngIf="form.controls.idautorCtrl.touched">Seleccione un autor</ion-note>
+      <ion-note slot="error" *ngIf="form.controls.idAutoresCtrl.touched">Ingrese Autor</ion-note>
+    </ion-item>
+
+    <ion-item fill="outline" class="item-espaciado">
+      <ion-label position="floating">Tecnicatura:</ion-label>
+      <ion-select formControlName="idtecnicaturasCtrl">
+        <ion-select-option *ngFor="let tecnicatura of listaTecnicaturas" [value]="tecnicatura.id">{{tecnicatura.especialidades}}</ion-select-option>
+      </ion-select>
+      <ion-note slot="error" *ngIf="form.controls.idtecnicaturasCtrl.touched">Ingrese Tecnicatura</ion-note>
+    </ion-item>
+
+    <ion-item fill="outline" class="item-espaciado">
+      <ion-label position="floating">Cohorte:</ion-label>
+      <ion-select formControlName="idCohorteCtrl">
+        <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.id">{{cohorte.idCohorte}}</ion-select-option>
+      </ion-select>
+      <ion-note slot="error" *ngIf="form.controls.idCohorteCtrl.touched">Ingrese Cohorte</ion-note>
     </ion-item>
 
     <ion-item fill="outline">
-      <ion-label position="floating">No. Páginas</ion-label>
+      <ion-label position="floating">No. Páginas:</ion-label>
       <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="paginasCtrl"></ion-input>
       <ion-note slot="error" *ngIf="form.controls.paginasCtrl.touched">Ingrese el nro. de páginas</ion-note>
     </ion-item>

@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Autores</ion-title>
-    <ion-progress-bar *ngIf="cargarAutores" type="indeterminate"></ion-progress-bar>
+    <ion-progress-bar *ngIf="cargandoAutor" type="indeterminate"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 
@@ -21,14 +21,15 @@
   </ion-refresher>
 
 <ion-list>
-  <ion-item-sliding *ngFor="let autor of listaAutores">
+  <ion-item-sliding *ngFor="let autor of listaAutor">
   <ion-item  button (click)="editar(autor)">
     <ion-note slot="start">{{autor.id}}</ion-note>
     <ion-label>
-      <h2>{{autor.titulo}}</h2>
-      <p>{{autor.autor}}</p>
+      <h2>{{autor.idAutores}}</h2>
+      <p>{{autor.nombreAutores}} {{autor.ApellidoAutores}}</p>
+      
     </ion-label>
-    <ion-badge color="medium" slot="end" >{{autor.paginas}} pag.</ion-badge>
+    <ion-badge color="medium" slot="end" >{{autor.ciAutores}} C.I.</ion-badge>
   </ion-item>
 
   <ion-item-options>

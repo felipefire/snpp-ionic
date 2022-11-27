@@ -3,6 +3,6 @@ export interface Autores{
     nombreAutores: string | null;
     ApellidoAutores: string | null;
     ciAutores: number | null;
-    años: number| null;
+    
   
 }

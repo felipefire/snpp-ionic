@@ -33,6 +33,7 @@ export class ProyectosPage implements OnInit {
   ngOnInit() {
     this.cargarProyectos();
   }
+
   public cargarProyectos(){
     this.refresher?.complete();
     this.cargandoProyectos = true;
@@ -74,7 +75,7 @@ export class ProyectosPage implements OnInit {
     this.formularioProyecto.form.controls.tituloCtrl.setValue(this.proyectoSeleccionado.titulo);
     this.formularioProyecto.form.controls.idautorCtrl.setValue(this.proyectoSeleccionado.idautores);
     this.formularioProyecto.form.controls.paginasCtrl.setValue(this.proyectoSeleccionado.paginas);
-    this.formularioProyecto.form.controls.idautorCohorteCtrl.setValue(this.proyectoSeleccionado.idautorCohorte);
+    this.formularioProyecto.form.controls.idCohorteCtrl.setValue(this.proyectoSeleccionado.idCohorte);
     this.formularioProyecto.form.controls.idtecnicaturaCtrl.setValue(this.proyectoSeleccionado.idtecnicatura);
 
 

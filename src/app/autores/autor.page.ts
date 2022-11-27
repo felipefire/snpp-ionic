@@ -71,7 +71,6 @@ export class AutoresPage implements OnInit {
     this.formularioAutor.form.controls.idCtrl.setValue(this.autorSeleccionado.idAutores);
     this.formularioAutor.form.controls.ciAutoresCtrl.setValue(this.autorSeleccionado.ciAutores);
     this.formularioAutor.form.controls.ApellidoAutoresCtrl.setValue(this.autorSeleccionado.ApellidoAutores);
-    this.formularioAutor.form.controls.añosCtrl.setValue(this.autorSeleccionado.años);
     this.formularioAutor.form.controls.nombreAutoresCtrl.setValue(this.autorSeleccionado.nombreAutores);
   
 

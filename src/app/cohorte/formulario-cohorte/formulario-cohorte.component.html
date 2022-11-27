@@ -2,10 +2,10 @@
 
   <ion-item fill="outline" class="item-espaciado">
     <ion-label position="floating">Cohorte:</ion-label>
-    <ion-select formControlName="idcohorte">
-    <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.id">{{cohorte.nombre}}</ion-select-option>
-  </ion-select>  
-  <ion-note slot="error" *ngIf="form.controls.idcohorteCtrl.touched"  color="danger">Seleccione  cohorte </ion-note>
+    <ion-select formControlName="idCohorteCtrl">
+      <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.id">{{cohorte.idCohorte}}</ion-select-option>
+    </ion-select>
+    <ion-note slot="error" *ngIf="form.controls.idCohorteCtrl.touched">Ingrese Cohorte</ion-note>
   </ion-item>
   
 
@@ -19,8 +19,8 @@
 
   <ion-item fill="outline" >
     <ion-label position="floating">Años:</ion-label>
-    <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="añosCtrl"></ion-input>
-    <ion-note slot="error" *ngIf="form.controls.paginasCtrl.touched" color="danger">Ingrese el año de cohorte</ion-note>
+    <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="anhiosCtrl"></ion-input>
+    <ion-note slot="error" *ngIf="form.controls.anhiosCtrl.touched" color="danger">Ingrese el año de cohorte</ion-note>
   </ion-item>
 
 

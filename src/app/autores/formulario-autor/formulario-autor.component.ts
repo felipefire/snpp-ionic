@@ -22,11 +22,10 @@ export class FormularioAutorComponent implements OnInit {
   public listaAutores: Autores[] = [];
 
   public form: FormGroup = new FormGroup({
-    idCtrl: new FormControl<number>(null, Validators.required),
-    tituloCtrl: new FormControl<string>(null, Validators.required),
     idautorCtrl: new FormControl<number>(null, Validators.required),
-    paginasCtrl: new FormControl<number>(null, Validators.required),
-    nombreAutores: new FormControl<string>(null,Validators.required),
+    nombresCtrl: new FormControl<string>(null, Validators.required),
+    apellidosCtrl: new FormControl<string>(null, Validators.required),
+    ciCtrl: new FormControl<number>(null, Validators.required)
   });
 
   constructor(
@@ -70,10 +69,9 @@ export class FormularioAutorComponent implements OnInit {
       
       
       idAutores: this.form.controls.idautorCtrl.value,
-      años: this.form.controls.añosCtrl.value,
-      ciAutores: this.form.controls.ciAutoresCtrl.value,
-      ApellidoAutores: this.form.controls.apellidoAutoresCtrl.value,
-     nombreAutores: this.form.controls.apellidoAutoresCtrl.value
+      ciAutores: this.form.controls.ciCtrl.value,
+      ApellidoAutores: this.form.controls.apellidosCtrl.value,
+     nombreAutores: this.form.controls.nombresCtrl.value
      
     }
     this.servicioAutores.post(autor).subscribe({
@@ -101,10 +99,9 @@ export class FormularioAutorComponent implements OnInit {
   private editar(){
     const autor: Autores = {
       idAutores: this.form.controls.idautorCtrl.value,
-      años: this.form.controls.añosCtrl.value,
-      ciAutores: this.form.controls.ciAutoresCtrl.value,
-      ApellidoAutores: this.form.controls.apellidoAutoresCtrl.value,
-     nombreAutores: this.form.controls.apellidoAutoresCtrl.value
+      ciAutores: this.form.controls.ciCtrl.value,
+      ApellidoAutores: this.form.controls.apellidosCtrl.value,
+     nombreAutores: this.form.controls.nombresCtrl.value
      
     }
     this.servicioAutores.put(autor).subscribe({

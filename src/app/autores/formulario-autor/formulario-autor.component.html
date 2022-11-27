@@ -1,25 +1,31 @@
-<form [[formGroup]="form">
+<form [formGroup]="form">
 <ion-list>
 
   <ion-item fill="outline" class="item-espaciado">
-    <ion-label position="floating">Autor</ion-label>
-    <ion-select formControlName="idautorCtrl">
-      <ion-select-option *ngFor="let autor of listaAutores" [value]="autor.id">{{autor.nombre}}</ion-select-option>
-    </ion-select>
-    <ion-note slot="error" *ngIf="form.controls.idautorCtrl.touched">Seleccione un autor</ion-note>
+    <ion-label position="floating">Codigo:</ion-label>
+    <ion-input formControlName="idautorCtrl">
+      
+    </ion-input>
+    <ion-note slot="error" *ngIf="form.controls.idautorCtrl.touched">Ingresar un Codigo</ion-note>
   </ion-item>
   
 
   <ion-item fill="outline" class="item-espaciado">
-    <ion-label position="floating">Tecnicatura:</ion-label>
-    <ion-input inputmode="text" type="text" placeholder="Ingresar..." formControlName="idtecnicaturaCtrl"></ion-input>
-      <ion-note slot="error" *ngIf="form.controls.idtecnicaturaCtrl.touched">Ingrese Tecnicatura</ion-note>
+    <ion-label position="floating">Nombres:</ion-label>
+    <ion-input inputmode="text" type="text" placeholder="Ingresar..." formControlName="nombresCtrl"></ion-input>
+      <ion-note slot="error" *ngIf="form.controls.nombresCtrl.touched">Ingrese Nombres</ion-note>
     </ion-item>
 
+    <ion-item fill="outline" class="item-espaciado">
+      <ion-label position="floating">Apellidos:</ion-label>
+      <ion-input inputmode="text" type="text" placeholder="Ingresar..." formControlName="apellidosCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.apellidosCtrl.touched">Ingrese Apellidos</ion-note>
+      </ion-item>
+
   <ion-item fill="outline" >
-    <ion-label position="floating">Años:</ion-label>
-    <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="añosCtrl"></ion-input>
-    <ion-note slot="error" *ngIf="form.controls.añosCtrl.touched" color="danger">Ingrese el año </ion-note>
+    <ion-label position="floating">Cedula de Identidad:</ion-label>
+    <ion-input inputmode="number" type="number" placeholder="Ingresar..." formControlName="ciCtrl"></ion-input>
+    <ion-note slot="error" *ngIf="form.controls.ciCtrl.touched" color="danger">Ingrese Cedula de Identidad </ion-note>
   </ion-item>
 
 
