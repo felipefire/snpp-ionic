@@ -16,4 +16,16 @@ export class TecnicaturasService {
   public get(): Observable<Tecnicaturas[]>{
     return this.http.get<Tecnicaturas[]>(this.url);
   }
-}
+  
+  public post (tecnicatura: Tecnicaturas): Observable<any>{
+    return this.http.post(this.url, tecnicatura,{ responseType: 'text'});
+  }
+  public put (tecnicatura: Tecnicaturas): Observable<any>{
+    return this.http.put(this.url, tecnicatura,{ responseType: 'text'});
+  }
+  
+  public delete(tecnicatura: Tecnicaturas): Observable<any>{
+    return this.http.delete(`${this.url}/${tecnicatura.idtecnicatura}`, {responseType: 'text'});
+    
+  }
+  }
