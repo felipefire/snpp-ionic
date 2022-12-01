@@ -23,7 +23,7 @@
 <ion-list>
   <ion-item-sliding *ngFor="let autor of listaAutor">
   <ion-item  button (click)="editar(autor)">
-    <ion-note slot="start">{{autor.id}}</ion-note>
+    <ion-note slot="start">{{autor.idAutores}}</ion-note>
     <ion-label>
       <h2>{{autor.idAutores}}</h2>
       <p>{{autor.nombreAutores}} {{autor.ApellidoAutores}}</p>

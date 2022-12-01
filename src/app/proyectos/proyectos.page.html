@@ -23,10 +23,10 @@
 <ion-list>
   <ion-item-sliding *ngFor="let proyecto of listaProyectos">
   <ion-item  button (click)="editar(proyecto)">
-    <ion-note slot="start">{{proyecto.id}}</ion-note>
+    <ion-note slot="start">{{proyecto.idproyecto}}</ion-note>
     <ion-label>
       <h2>{{proyecto.idproyecto}}</h2>
-      <p>{{proyecto.titulo}} {{proyecto.titulo}} {{proyecto.idAutores}}  {{proyecto.idtecnicaturas}} {{proyecto.idCohorte}} </p> 
+      <p>{{proyecto.titulo}} {{proyecto.titulo}} {{proyecto.idautores}}  {{proyecto.idtecnicatura}} {{proyecto.idCohorte}} </p> 
     </ion-label>
     <ion-badge color="medium" slot="end" >{{proyecto.paginas}} pag.</ion-badge>
   </ion-item>
@@ -54,7 +54,7 @@
 
     <ion-content>
       <div style="padding: 10px;">      
-        <app-formulario-proyecto (recargar)="cargarPoryectos()"></app-formulario-proyecto>
+        <app-formulario-proyecto (recargar)="cargarProyectos()"></app-formulario-proyecto>
       </div>
     </ion-content>
 

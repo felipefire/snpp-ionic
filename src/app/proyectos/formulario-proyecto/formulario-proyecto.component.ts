@@ -7,6 +7,8 @@ import { Tecnicaturas } from 'src/app/interfaces/tecnicaturas.interface';
 import { AutoresService } from 'src/app/servicios/autores.service';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { Cohorte } from 'src/app/interfaces/cohorte.interface';
+import { TecnicaturasService } from 'src/app/servicios/tecnicaturas.service';
+import { CohortesService } from 'src/app/servicios/cohortes.service';
 
 @Component({
   selector: 'app-formulario-proyecto',
@@ -22,6 +24,7 @@ export class FormularioProyectoComponent implements OnInit {
 
   public listaAutores: Autores[] = [];
   public listaTecnicaturas: Tecnicaturas[] = []
+  public listaCohorte: Cohorte[] = []
 
   public form: FormGroup = new FormGroup({
     idproyectoCtrl: new FormControl<number>(null, Validators.required),
@@ -29,16 +32,19 @@ export class FormularioProyectoComponent implements OnInit {
     idCohorteCtrl: new FormControl<number>(null, Validators.required),
     idAutoresCtrl: new FormControl<number>(null, Validators.required),
     idtecnicaturasCtrl: new FormControl<number>(null, Validators.required),
-    paginasCtrl: new FormControl<number>(null, Validators.required)
+    paginasCtrl: new FormControl<number>(null, Validators.required),
+    documentoCtrl: new FormControl(null, Validators.required),
   });
 
   constructor(
     private servicioAutores: AutoresService,
     private servicioToast: ToastController,
     private servicioProyecto: ProyectosService,
+    private servicioTecnicaturas: TecnicaturasService,
+    private servicioCohortes: CohortesService,
   ) { }
  
-  private cargarAutores(){
+  private cargarAutores(){ // seguir el mismo proceso para tecnicaturas y cohorte
   this.servicioAutores.get().subscribe({
     next: (autores) => {
       this.listaAutores = autores;
@@ -54,8 +60,45 @@ export class FormularioProyectoComponent implements OnInit {
   });
   }
 
+  private cargarTecnicaturas(){ 
+    this.servicioTecnicaturas.get().subscribe({
+      next: (tecnicaturas) => {
+        this.listaTecnicaturas = tecnicaturas;
+      },
+      error: (e) => {
+        console.error('Error al cargar Tecnicatura', e);
+        this.servicioToast.create({
+          header: 'Error al cargar Tecnicatura',
+          message: e.error,
+          color:'danger'
+        })
+      }
+    });
+    }
+
+
+    private cargarCohortes(){ 
+      this.servicioCohortes.get().subscribe({
+        next: (cohorte) => {
+          this.listaCohorte = cohorte;
+        },
+        error: (e) => {
+          console.error('Error al cargar Cohorte', e);
+          this.servicioToast.create({
+            header: 'Error al cargar Cohorte',
+            message: e.error,
+            color:'danger'
+          })
+        }
+      });
+      }
+    
   ngOnInit() {
-    this.cargarAutores();
+    this.cargarAutores();// agregar los metodos de carga de tecnicaturas y cohorte
+  this.cargarTecnicaturas();
+  this.cargarCohortes();
+  
+  
   }
 
   guardar(){
@@ -99,6 +142,15 @@ export class FormularioProyectoComponent implements OnInit {
           duration: 3500,
           color: 'danger'
         }).then(t=> t.present())
+      }
+    })
+    const archivo = this.form.controls.documentoCtrl.value;
+    this.servicioProyecto.subirArchivo(proyecto.idproyecto, archivo).subscribe({
+      next: ()=>{
+        console.log("Se subio el archivo");
+      },
+      error: (e) =>{
+        console.error("error al subir archivo", e);
       }
     })
   }

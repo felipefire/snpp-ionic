@@ -16,4 +16,16 @@ export class CohortesService {
   public get(): Observable<Cohorte[]>{
     return this.http.get<Cohorte[]>(this.url);
   }
+
+  public post (cohorte: Cohorte): Observable<any>{
+    return this.http.post(this.url, cohorte,{ responseType: 'text'});
+  }
+  public put (cohorte: Cohorte): Observable<any>{
+    return this.http.put(this.url, cohorte,{ responseType: 'text'});
+  }
+
+  public delete(cohorte: Cohorte): Observable<any>{
+    return this.http.delete(`${this.url}/${cohorte.idCohorte}`, {responseType: 'text'});
+    
+  }
 }

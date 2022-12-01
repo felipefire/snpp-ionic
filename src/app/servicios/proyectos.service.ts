@@ -29,4 +29,10 @@ export class ProyectosService {
     return this.http.delete(`${this.url}/${proyecto.idproyecto}`, {responseType: 'text'});
     
   }
+
+  public subirArchivo(id: number, documento: any): Observable<any>{
+    const formData = new FormData();
+    formData.append("documento", documento);
+    return this.http.post(`${this.url}/${id}/archivo`, formData);
+  }
 }

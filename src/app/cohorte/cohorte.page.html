@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Cohorte</ion-title>
-    <ion-progress-bar *ngIf="cargarCohortes" type="indeterminate"></ion-progress-bar>
+    <ion-progress-bar *ngIf="cargandoCohorte" type="indeterminate"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 
@@ -16,19 +16,19 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-refresher slot="fixed" (ionRefresh)="cargarCohortes()">
+  <ion-refresher slot="fixed" (ionRefresh)="cargandoCohorte()">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
 <ion-list>
-  <ion-item-sliding *ngFor="let cohorte of listaCohortes">
+  <ion-item-sliding *ngFor="let cohorte of listaCohorte">
   <ion-item  button (click)="editar(cohorte)">
-    <ion-note slot="start">{{cohorte.id}}</ion-note>
+    <ion-note slot="start">{{cohorte.idCohorte}}</ion-note>
     <ion-label>
-      <h2>{{cohorte.titulo}}</h2>
-      <p>{{cohorte.autor}}</p>
+      <h2>{{cohorte.idCohorte}}</h2>
+      <p>{{cohorte.añosdesde}} {{cohorte.añoshasta}}</p>
     </ion-label>
-    <ion-badge color="medium" slot="end" >{{cohorte.paginas}} pag.</ion-badge>
+   <ion-badge color="medium" slot="end" >{{cohorte.paginas}} pag.</ion-badge>
   </ion-item>
 
   <ion-item-options>
@@ -54,7 +54,7 @@
 
     <ion-content>
       <div style="padding: 10px;">      
-        <app-formulario-cohorte (recargar)="cargarCohortes()"></app-formulario-cohorte>
+        <app-formulario-cohorte (recargar)="cargandoCohorte()"></app-formulario-cohorte>
       </div>
     </ion-content>
 

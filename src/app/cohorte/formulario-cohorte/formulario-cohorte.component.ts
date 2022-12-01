@@ -3,8 +3,7 @@ import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Cohorte } from 'src/app/interfaces/cohorte.interface';
 import{CohortesService} from 'src/app/servicios/cohortes.service';
-import { Proyecto } from 'src/app/interfaces/proyectos.interface';
-import { ProyectosService } from 'src/app/servicios/proyectos.service';
+
 @Component({
   selector: 'app-formulario-cohorte',
   templateUrl: './formulario-cohorte.component.html',
@@ -21,18 +20,18 @@ export class FormularioCohorteComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({
     idCohorteCtrl: new FormControl<number>(null, Validators.required),
-    idtecnicaturaCtrl: new FormControl<number>(null, Validators.required),
-    añosCtrl: new FormControl<number>(null, Validators.required)
+    añosdesdeCtrl: new FormControl<number>(null, Validators.required),
+    añoshastaCtrl: new FormControl<number>(null, Validators.required)
   });
 
   constructor(
-    private servicioCohortes: CohortesService,
+    private servicioCohorte: CohortesService,
     private servicioToast: ToastController,
-    private servicioProyecto: ProyectosService,
+  
   ) { }
  
-  private cargarCohortes(){
-  this.servicioCohortes.get().subscribe({
+  private cargarCohorte(){
+  this.servicioCohorte.get().subscribe({
     next: (cohortes) => {
       this.listaCohortes = cohortes;
     },
@@ -48,7 +47,7 @@ export class FormularioCohorteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cargarCohortes();
+    this.cargarCohorte();
   }
 
   guardar(){
@@ -63,27 +62,25 @@ export class FormularioCohorteComponent implements OnInit {
   }
 
   private registrar(){
-    const proyecto: Proyecto = {
-      idproyecto: this.form.controls.idCtrl.value,
-      titulo: this.form.controls.tituloCtrl.value,
-      idautores: this.form.controls.idautorCtrl.value,
-      paginas: this.form.controls.paginasCtrl.value,
+    const cohorte: Cohorte = {
       idCohorte: this.form.controls.idCohorteCtrl.value,
-      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
+      añosdesde: this.form.controls.añosdesdeCtrl.value,
+      añoshasta: this.form.controls.añoshastaCtrl.value,
+     
      
     }
-    this.servicioProyecto.post(proyecto).subscribe({
+    this.servicioCohorte.post(cohorte).subscribe({
       next: () => {
         this.recargar.emit(true);
         this.servicioToast.create({
           header: 'Éxito',
-          message: 'Se registró correctamente el Proyecto',
+          message: 'Se registró correctamente la Cohorte',
           duration: 2000,
           color: 'success'
         }).then (t => t.present());
       },
       error: (e) => {
-        console.error('Error al registrar el Proyecto', e);
+        console.error('Error al registrar la Cohorte', e);
         this.servicioToast.create({
           header: 'Error al registrar',
           message: e.message,
@@ -95,15 +92,13 @@ export class FormularioCohorteComponent implements OnInit {
   }
 
   private editar(){
-    const proyecto: Proyecto = {
-      idproyecto: this.form.controls.idCtrl.value,
-      titulo: this.form.controls.tituloCtrl.value,
-      idautores: this.form.controls.idautorCtrl.value,
-      paginas: this.form.controls.paginasCtrl.value,
+    const cohorte: Cohorte = {
       idCohorte: this.form.controls.idCohorteCtrl.value,
-      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value
+      añosdesde: this.form.controls.añosdesdeCtrl.value,
+      añoshasta: this.form.controls.añoshastaCtrl.value,
+     
     }
-    this.servicioProyecto.put(proyecto).subscribe({
+    this.servicioCohorte.put(cohorte).subscribe({
       next: () => {
         this.recargar.emit(true);
         this.servicioToast.create({

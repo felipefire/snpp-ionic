@@ -7,7 +7,7 @@ import { Tecnicaturas} from '../interfaces/tecnicaturas.interface';
   providedIn: 'root'
 })
 export class TecnicaturasService {
-  private url: string = 'http://localhost:3000/tecnicatura';
+  private url: string = 'http://localhost:3000/tecnicaturas';
 
   constructor(
     private http: HttpClient

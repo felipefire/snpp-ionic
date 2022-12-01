@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Tecnicaturas</ion-title>
-    <ion-progress-bar *ngIf="cargandoTecnicaturas" type="indeterminate"></ion-progress-bar>
+    <ion-progress-bar *ngIf="cargarTecnicaturas" type="indeterminate"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let tecnicatura of listaTecnicaturas">
       <ion-item button (click)="editar(tecnicatura)">
-        <ion-note slot="start">{{tecnicatura.id}}</ion-note>
+        <ion-note slot="start">{{tecnicatura.idtecnicatura}}</ion-note>
         <ion-label>
           <h2>{{tecnicatura.idtecnicatura}}</h2>
           <p>{{tecnicatura.especialidades}} </p>
@@ -53,7 +53,7 @@
 
       <ion-content>
         <div style="padding: 10px;">
-          <app-formulario-tecnicaturas (recargar)="cargarTecnicaturas()"></app-formulario-tecnicaturas>
+          <app-formulario-tecnicaturas (recargar)="cargandoTecnicaturas()"></app-formulario-tecnicaturas>
         </div>
       </ion-content>
 

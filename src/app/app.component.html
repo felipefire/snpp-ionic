@@ -1,77 +1,70 @@
+<ion-app>
+  <ion-menu contentId="contenido">
+    <ion-img src="assets/indice.jpeg" style="width: 200px;" ></ion-img>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title> <strong>MENU</strong> </ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-  <ion-app>
-   
-  
-   
-
-
-    <ion-menu contentId="contenido">
-      <ion-img src="assets/indice.jpeg" style="width: 200px;" ></ion-img>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title> <strong>MENU</strong> </ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ion-content>
-        <ion-list lines="none">
-         
-          <ion-menu-toggle>
-          <ion-item button routerLink="home" routerLinkActive="seleccionado">
-            <ion-icon name="home" slot="start"></ion-icon>
-            <ion-label><strong>Inicio</strong> </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+    <ion-content>
+      <ion-list lines="none">
+       
         <ion-menu-toggle>
-          <ion-item button routerLink="proyectos" routerLinkActive="seleccionado">
-            <ion-icon name="albums" slot="start"></ion-icon>
-            <ion-label><strong>Proyectos</strong></ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-  
-        <ion-menu-toggle>
-          <ion-item button routerLink="autores" routerLinkActive="seleccionado">
-            <ion-icon name="people" slot="start"></ion-icon>
-            <ion-label><strong>Autores</strong></ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-  
-        <ion-menu-toggle>
-          <ion-item button routerLink="tecnicaturas" routerLinkActive="seleccionado">
-            <ion-icon name="school" slot="start"></ion-icon>
-            <ion-label><strong>Tecnicaturas</strong></ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-  
-        <ion-menu-toggle>
-          <ion-item button routerLink="cohorte" routerLinkActive="seleccionado">
-            <ion-icon name="hourglass" slot="start"></ion-icon>
-            <ion-label><strong>Cohorte</strong></ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-  
-        
-  
-        <ion-menu-toggle>
-          <ion-item button routerLink="usuario" routerLinkActive="seleccionado">
-            <ion-icon name="people-circle" slot="start"></ion-icon>
-            <ion-label><strong>Usuario</strong></ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+        <ion-item button routerLink="home" routerLinkActive="seleccionado">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label><strong>Inicio</strong> </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item button routerLink="proyectos" routerLinkActive="seleccionado">
+          <ion-icon name="albums" slot="start"></ion-icon>
+          <ion-label><strong>Proyectos</strong></ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="autores" routerLinkActive="seleccionado">
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label><strong>Autores</strong></ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="tecnicaturas" routerLinkActive="seleccionado">
+          <ion-icon name="school" slot="start"></ion-icon>
+          <ion-label><strong>Tecnicaturas</strong></ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="cohorte" routerLinkActive="seleccionado">
+          <ion-icon name="hourglass" slot="start"></ion-icon>
+          <ion-label><strong>Cohorte</strong></ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      
+
+      <ion-menu-toggle>
+        <ion-item button routerLink="usuario" routerLinkActive="seleccionado">
+          <ion-icon name="people-circle" slot="start"></ion-icon>
+          <ion-label><strong>Usuario</strong></ion-label>
+        </ion-item>
+      </ion-menu-toggle>
 
 
-        <ion-menu-toggle>
-          <ion-item >
-            <ion-icon name="id-card" slot="start"></ion-icon>
-            <div><a href="https://identidad.mtess.gov.py/alumno/login.php" ion-button> <strong
-              style="color: black;">Inscribete al SNPP</strong></a>
-        </div>
-          </ion-item>
-        </ion-menu-toggle>
-  
-        </ion-list>
-      </ion-content>   
-    </ion-menu>
-    <ion-router-outlet id="contenido"></ion-router-outlet>
-  </ion-app>
+      <ion-menu-toggle>
+        <ion-item >
+          <ion-icon name="id-card" slot="start"></ion-icon>
+          <div><a href="https://identidad.mtess.gov.py/alumno/login.php" ion-button> <strong
+            style="color: black;">Inscribete al SNPP</strong></a>
+      </div>
+        </ion-item>
+      </ion-menu-toggle>
 
+      </ion-list>
+    </ion-content>   
+  </ion-menu>
+  <ion-router-outlet id="contenido"></ion-router-outlet>
+</ion-app>
