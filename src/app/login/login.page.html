@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    
+      <ion-img class="imagenportada" src="assets/icon/M1.jpg"></ion-img>
+    
+    <ion-title><strong>  login</strong></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,21 +15,22 @@
         <form [formGroup]="form">
           <ion-list>
             <ion-item>
-              <ion-label>CI</ion-label>
+              <ion-label></ion-label>
               <ion-input pInputText placeholder="Nro. Documento" class="w-full" formControlName="ci"></ion-input>
-              <ion-note slot="error" *ngIf="form.controls.ci.touched" color="danger">Ingrese el año de cohorte
+              <ion-note slot="error" *ngIf="form.controls.ci.touched" color="danger">Ingrese el Nro. Documento
               </ion-note>
             </ion-item>
             <ion-item>
-              <ion-label>Contraseña</ion-label>
+              <ion-label></ion-label>
               <ion-input id="password" type="password" placeholder="Contraseña" class="w-full"
                 formControlName="password"></ion-input>
-              <ion-note slot="error" *ngIf="form.controls.password.touched" color="danger">Ingrese el año de cohorte
+              <ion-note slot="error" *ngIf="form.controls.password.touched" color="danger">Ingrese la contraseña
               </ion-note>
             </ion-item>
+
           </ion-list>
         </form>
-        <ion-button expand="full" (click)="iniciarSesion()">Login</ion-button>
+        <ion-button expand="full" (click)="iniciarSesion()">Guardar Administrador</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

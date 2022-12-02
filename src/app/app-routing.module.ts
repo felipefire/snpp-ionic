@@ -24,8 +24,8 @@ const routes: Routes = [
     loadChildren: () => import('./tecnicaturas/tecnicaturas.module').then( m => m.TecnicaturasPageModule)
   },
   {
-    path: 'usuario',
-    loadChildren: () => import('./usuario/usuario.module').then( m => m.UsuarioPageModule)
+    path: 'administrador',
+    loadChildren: () => import('./administrador/usuario.module').then( m => m.UsuarioPageModule)
   },
   
   {

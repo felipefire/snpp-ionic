@@ -70,8 +70,8 @@ export class CohortePage implements OnInit {
   if(this.modoFormulario === 'Editar') {
     this.formularioCohorte.modo = this.modoFormulario;
     this.formularioCohorte.form.controls.idCohorteCtrl.setValue(this.cohorteSeleccionado.idCohorte);
-    this.formularioCohorte.form.controls.añosdesdeCtrl.setValue(this.cohorteSeleccionado.añosdesde);
-    this.formularioCohorte.form.controls.añoshastaCtrl.setValue(this.cohorteSeleccionado.añoshasta);
+    this.formularioCohorte.form.controls.anhosdesdeCtrl.setValue(this.cohorteSeleccionado.anhosdesde);
+    this.formularioCohorte.form.controls.anhoshastaCtrl.setValue(this.cohorteSeleccionado.anhoshasta);
     
   
 
@@ -83,7 +83,7 @@ export class CohortePage implements OnInit {
     this.servicioAlert.create({
       header: 'Confirmar eliminación',
       subHeader: '¿Realmente desea eliminar Cohorte?',
-      message: `${cohorte.idCohorte} - ${cohorte.añosdesde} (${cohorte.añoshasta})`,
+      message: `${cohorte.idCohorte} - ${cohorte.anhosdesde} (${cohorte.anhoshasta})`,
       buttons:[
         {
           text: 'Cancelar',          

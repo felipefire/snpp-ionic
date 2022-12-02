@@ -20,8 +20,8 @@ export class FormularioCohorteComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({
     idCohorteCtrl: new FormControl<number>(null, Validators.required),
-    añosdesdeCtrl: new FormControl<number>(null, Validators.required),
-    añoshastaCtrl: new FormControl<number>(null, Validators.required)
+    anhosdesdeCtrl: new FormControl<number>(null, Validators.required),
+    anhoshastaCtrl: new FormControl<number>(null, Validators.required)
   });
 
   constructor(
@@ -64,8 +64,8 @@ export class FormularioCohorteComponent implements OnInit {
   private registrar(){
     const cohorte: Cohorte = {
       idCohorte: this.form.controls.idCohorteCtrl.value,
-      añosdesde: this.form.controls.añosdesdeCtrl.value,
-      añoshasta: this.form.controls.añoshastaCtrl.value,
+      anhosdesde: this.form.controls.anhosdesdeCtrl.value,
+      anhoshasta: this.form.controls.anhoshastaCtrl.value,
      
      
     }
@@ -94,8 +94,8 @@ export class FormularioCohorteComponent implements OnInit {
   private editar(){
     const cohorte: Cohorte = {
       idCohorte: this.form.controls.idCohorteCtrl.value,
-      añosdesde: this.form.controls.añosdesdeCtrl.value,
-      añoshasta: this.form.controls.añoshastaCtrl.value,
+      anhosdesde: this.form.controls.anhosdesdeCtrl.value,
+      anhoshasta: this.form.controls.anhoshastaCtrl.value,
      
     }
     this.servicioCohorte.put(cohorte).subscribe({
@@ -103,13 +103,13 @@ export class FormularioCohorteComponent implements OnInit {
         this.recargar.emit(true);
         this.servicioToast.create({
           header: 'Éxito',
-          message: 'Se editó correctamente el Proyecto',
+          message: 'Se editó correctamente el Cohorte',
           duration: 2000,
           color: 'success'
         }).then (t => t.present());
       },
       error: (e) => {
-        console.error('Error al editar el Proyecto', e);
+        console.error('Error al editar el Cohorte', e);
         this.servicioToast.create({
           header: 'Error al editar',
           message: e.message,

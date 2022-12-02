@@ -1,5 +1,5 @@
 export interface Cohorte{
     idCohorte: number | null;
-    añosdesde: number | null;
-    añoshasta: number | null;
+    anhosdesde: number | null;
+    anhoshasta: number | null;
 }

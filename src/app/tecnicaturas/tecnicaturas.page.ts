@@ -11,8 +11,6 @@ import { TecnicaturasService } from '../servicios/tecnicaturas.service';
 })
 export class TecnicaturasPage implements OnInit {
 
-
-
   @ViewChild(IonRefresher) refresher: IonRefresher;
   @ViewChild(FormularioTecnicaturasComponent) formularioTecnicaturas!: FormularioTecnicaturasComponent;
 

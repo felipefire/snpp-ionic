@@ -1,5 +1,5 @@
 export interface Usuarios{
     idusuario: number | null;
-    nombre: string | null;
+    nombres: string | null;
     tipo: string | null;
 }
