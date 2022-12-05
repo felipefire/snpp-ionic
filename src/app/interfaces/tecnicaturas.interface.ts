@@ -1,5 +1,5 @@
 export interface Tecnicaturas{
-    idtecnicatura: number | null;
+    idtecnicaturas: number | null;
     especialidades: string | null;
         
 }

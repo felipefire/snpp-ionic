@@ -4,6 +4,7 @@ import { Credenciales } from './../interfaces/credenciales.interface';
 import { SesionService } from '../servicios/sesion.service';
 import { Subscriber } from 'rxjs';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginPage implements OnInit {
   constructor(
     private servicioSesion: SesionService,
     private servicioToast: ToastController,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class LoginPage implements OnInit {
       }
       this.servicioSesion.iniciar(cred).subscribe({
         next: (respuesta) => {
+          this.router.navigate(['/home'])
           this.servicioToast.create({
             header: 'Sesión iniciada',
             duration: 3500,

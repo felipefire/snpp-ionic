@@ -85,7 +85,7 @@ export class FormularioAutorComponent implements OnInit {
         }).then (t => t.present());
       },
       error: (e) => {
-        console.error('Error al registrar el Proyecto', e);
+        console.error('Error al registrar el autor', e);
         this.servicioToast.create({
           header: 'Error al registrar',
           message: e.message,

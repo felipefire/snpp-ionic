@@ -12,7 +12,7 @@
 <ion-content>
 
   <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
-    <ion-fab-button (click)="nuevo()">
+    <ion-fab-button (click)="nuevo()" *ngIf="servicioSesion.token != null">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -24,15 +24,14 @@
   <ion-list>
     <ion-item-sliding *ngFor="let tecnicaturas of listaTecnicaturas">
       <ion-item button (click)="editar(tecnicaturas)">
-        <ion-note slot="start">{{tecnicaturas.idtecnicatura}}</ion-note>
+        <ion-note slot="start">{{tecnicaturas.idtecnicaturas}}</ion-note>
         <ion-label>
-          <h2>{{tecnicaturas.idtecnicatura}}</h2>
-          <p>{{tecnicaturas.especialidades}} </p>
+          <h2>{{tecnicaturas.especialidades}} </h2>
         </ion-label>
       </ion-item>
 
       <ion-item-options>
-        <ion-item-option color="danger">
+        <ion-item-option color="danger" *ngIf="servicioSesion.token != null">
           <ion-icon slot="icon-only" name="trash" (click)="confirmarEliminacion(tecnicaturas)"></ion-icon>
         </ion-item-option>
       </ion-item-options>

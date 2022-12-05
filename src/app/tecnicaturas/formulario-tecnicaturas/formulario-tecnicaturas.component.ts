@@ -68,7 +68,7 @@ export class FormularioTecnicaturasComponent implements OnInit {
     const tecnicaturas: Tecnicaturas = {
 
 
-      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value,
+      idtecnicaturas: this.form.controls.idtecnicaturaCtrl.value,
       
       especialidades: this.form.controls.especialidadesCtrl.value
     }
@@ -96,7 +96,7 @@ export class FormularioTecnicaturasComponent implements OnInit {
 
   private editar() {
     const tecnicaturas: Tecnicaturas = {
-      idtecnicatura: this.form.controls.idtecnicaturaCtrl.value,
+      idtecnicaturas: this.form.controls.idtecnicaturaCtrl.value,
       
       especialidades: this.form.controls.especialidadesCtrl.value
 

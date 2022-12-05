@@ -47,12 +47,12 @@
 
       
 
-      <ion-menu-toggle>
+      <!--<ion-menu-toggle>
         <ion-item button routerLink="administrador" routerLinkActive="seleccionado">
           <ion-icon name="people-circle" slot="start"></ion-icon>
           <ion-label><strong>Administrador</strong></ion-label>
         </ion-item>
-      </ion-menu-toggle>
+      </ion-menu-toggle>-->
 
 
       <ion-menu-toggle>
@@ -63,7 +63,16 @@
       </div>
         </ion-item>
       </ion-menu-toggle>
-
+      <ion-menu-toggle>
+        <ion-item routerLink="/login" *ngIf="servicioSesion.token == null">
+          <ion-icon name="log-in" slot="start"></ion-icon>
+          <ion-label><strong>Login</strong>   </ion-label>
+        </ion-item>
+        <ion-item button *ngIf="servicioSesion.token != null" (click)="servicioSesion.cerrarSesion()">
+          <ion-icon name="log-out" slot="start"></ion-icon>
+          <ion-label><strong>Cerrar sesión</strong>  </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
       </ion-list>
     </ion-content>   
   </ion-menu>

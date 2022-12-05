@@ -2,8 +2,12 @@ export interface Proyecto{
     idproyecto: number | null;
     titulo: string | null;
     idCohorte: number| null;
-    idautores: string | null;
+    idAutores: number | null;
     paginas: number | null;
-    idtecnicatura: string | null;
-  
+    idtecnicaturas: number | null;
+    nombreAutores?: string;
+    ApellidoAutores?: string;
+    anhosdesde?: number;
+    anhoshasta?: number;
+    especialidades?: string;
 }

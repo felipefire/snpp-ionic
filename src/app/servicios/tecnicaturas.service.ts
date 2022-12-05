@@ -25,7 +25,7 @@ export class TecnicaturasService {
   }
   
   public delete(tecnicatura: Tecnicaturas): Observable<any>{
-    return this.http.delete(`${this.url}/${tecnicatura.idtecnicatura}`, {responseType: 'text'});
+    return this.http.delete(`${this.url}/${tecnicatura.idtecnicaturas}`, {responseType: 'text'});
     
   }
   }

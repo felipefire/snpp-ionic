@@ -3,6 +3,7 @@ import { AlertController, IonRefresher, ToastController } from '@ionic/angular';
 import { FormularioProyectoComponent } from './formulario-proyecto/formulario-proyecto.component';
 import { Proyecto } from '../interfaces/proyectos.interface';
 import { ProyectosService } from '../servicios/proyectos.service';
+import { SesionService } from '../servicios/sesion.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class ProyectosPage implements OnInit {
   constructor(
     private servicioProyectos: ProyectosService,
     private servicioToast: ToastController,
-    private servicioAlert: AlertController
+    private servicioAlert: AlertController,
+    public servicioSesion: SesionService
   ) { }
 
   ngOnInit() {
@@ -65,18 +67,22 @@ export class ProyectosPage implements OnInit {
   public editar(proyecto: Proyecto){
     this.proyectoSeleccionado = proyecto;
     this.modoFormulario = 'Editar';
-    this.modalVisible = true;
+    if(this.servicioSesion.token != null){
+      this.modalVisible = true;
+    }
+    
   }
 
   public cargarDatosEditar(){
+    console.log(this.proyectoSeleccionado);
   if(this.modoFormulario === 'Editar') {
     this.formularioProyecto.modo = this.modoFormulario;
     this.formularioProyecto.form.controls.idproyectoCtrl.setValue(this.proyectoSeleccionado.idproyecto);
     this.formularioProyecto.form.controls.tituloCtrl.setValue(this.proyectoSeleccionado.titulo);
-    this.formularioProyecto.form.controls.idautorCtrl.setValue(this.proyectoSeleccionado.idautores);
+    this.formularioProyecto.form.controls.idAutoresCtrl.setValue(this.proyectoSeleccionado.idAutores);
     this.formularioProyecto.form.controls.paginasCtrl.setValue(this.proyectoSeleccionado.paginas);
     this.formularioProyecto.form.controls.idCohorteCtrl.setValue(this.proyectoSeleccionado.idCohorte);
-    this.formularioProyecto.form.controls.idtecnicaturaCtrl.setValue(this.proyectoSeleccionado.idtecnicatura);
+    this.formularioProyecto.form.controls.idtecnicaturasCtrl.setValue(this.proyectoSeleccionado.idtecnicaturas);
 
 
     }  
@@ -86,7 +92,7 @@ export class ProyectosPage implements OnInit {
     this.servicioAlert.create({
       header: 'Confirmar eliminación',
       subHeader: '¿Realmente desea eliminar el Proyecto?',
-      message: `${proyecto.idproyecto} - ${proyecto.titulo} (${proyecto.idautores})`,
+      message: `${proyecto.idproyecto} - ${proyecto.titulo} (${proyecto.idAutores})`,
       buttons:[
         {
           text: 'Cancelar',          

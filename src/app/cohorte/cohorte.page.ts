@@ -3,6 +3,7 @@ import { AlertController,IonRefresher, ToastController } from '@ionic/angular';
 import { FormularioCohorteComponent } from './formulario-cohorte/formulario-cohorte.component';
 import { Cohorte } from '../interfaces/cohorte.interface';
 import { CohortesService } from '../servicios/cohortes.service';
+import { SesionService } from '../servicios/sesion.service';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class CohortePage implements OnInit {
   constructor(
     private servicioCohorte: CohortesService,
     private servicioToast: ToastController,
-    private servicioAlert: AlertController
+    private servicioAlert: AlertController,
+    public servicioSesion: SesionService
   ) { }
 
   ngOnInit() {
@@ -63,13 +65,15 @@ export class CohortePage implements OnInit {
   public editar(cohorte: Cohorte){
     this.cohorteSeleccionado = cohorte
     this.modoFormulario = 'Editar';
-    this.modalVisible = true;
+    if(this.servicioSesion.token != null){
+      this.modalVisible = true;
+    }
   }
 
   public cargarDatosEditar(){
   if(this.modoFormulario === 'Editar') {
     this.formularioCohorte.modo = this.modoFormulario;
-    this.formularioCohorte.form.controls.idCohorteCtrl.setValue(this.cohorteSeleccionado.idCohorte);
+    this.formularioCohorte.form.controls.idCohorteCtrl.setValue(this.cohorteSeleccionado.idcohorte);
     this.formularioCohorte.form.controls.anhosdesdeCtrl.setValue(this.cohorteSeleccionado.anhosdesde);
     this.formularioCohorte.form.controls.anhoshastaCtrl.setValue(this.cohorteSeleccionado.anhoshasta);
     
@@ -83,7 +87,7 @@ export class CohortePage implements OnInit {
     this.servicioAlert.create({
       header: 'Confirmar eliminación',
       subHeader: '¿Realmente desea eliminar Cohorte?',
-      message: `${cohorte.idCohorte} - ${cohorte.anhosdesde} (${cohorte.anhoshasta})`,
+      message: `${cohorte.idcohorte} - ${cohorte.anhosdesde} (${cohorte.anhoshasta})`,
       buttons:[
         {
           text: 'Cancelar',          

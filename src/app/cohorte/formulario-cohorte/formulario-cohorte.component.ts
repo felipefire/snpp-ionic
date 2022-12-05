@@ -63,7 +63,7 @@ export class FormularioCohorteComponent implements OnInit {
 
   private registrar(){
     const cohorte: Cohorte = {
-      idCohorte: this.form.controls.idCohorteCtrl.value,
+      idcohorte: this.form.controls.idCohorteCtrl.value,
       anhosdesde: this.form.controls.anhosdesdeCtrl.value,
       anhoshasta: this.form.controls.anhoshastaCtrl.value,
      
@@ -93,7 +93,7 @@ export class FormularioCohorteComponent implements OnInit {
 
   private editar(){
     const cohorte: Cohorte = {
-      idCohorte: this.form.controls.idCohorteCtrl.value,
+      idcohorte: this.form.controls.idCohorteCtrl.value,
       anhosdesde: this.form.controls.anhosdesdeCtrl.value,
       anhoshasta: this.form.controls.anhoshastaCtrl.value,
      

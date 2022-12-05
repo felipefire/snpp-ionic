@@ -25,7 +25,7 @@ export class CohortesService {
   }
 
   public delete(cohorte: Cohorte): Observable<any>{
-    return this.http.delete(`${this.url}/${cohorte.idCohorte}`, {responseType: 'text'});
+    return this.http.delete(`${this.url}/${cohorte.idcohorte}`, {responseType: 'text'});
     
   }
 }

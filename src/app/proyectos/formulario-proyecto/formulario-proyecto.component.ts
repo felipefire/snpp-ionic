@@ -9,6 +9,7 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { Cohorte } from 'src/app/interfaces/cohorte.interface';
 import { TecnicaturasService } from 'src/app/servicios/tecnicaturas.service';
 import { CohortesService } from 'src/app/servicios/cohortes.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-formulario-proyecto',
@@ -34,6 +35,7 @@ export class FormularioProyectoComponent implements OnInit {
     idtecnicaturasCtrl: new FormControl<number>(null, Validators.required),
     paginasCtrl: new FormControl<number>(null, Validators.required),
     documentoCtrl: new FormControl(null, Validators.required),
+    fuenteDocumentoCtrl: new FormControl('', Validators.required)
   });
 
   constructor(
@@ -95,10 +97,19 @@ export class FormularioProyectoComponent implements OnInit {
     
   ngOnInit() {
     this.cargarAutores();// agregar los metodos de carga de tecnicaturas y cohorte
-  this.cargarTecnicaturas();
-  this.cargarCohortes();
+    this.cargarTecnicaturas();
+    this.cargarCohortes();
   
   
+  }
+
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.form.patchValue({
+        fuenteDocumentoCtrl: file
+      });
+    }
   }
 
   guardar(){
@@ -117,14 +128,15 @@ export class FormularioProyectoComponent implements OnInit {
       idproyecto: this.form.controls.idproyectoCtrl.value,
       titulo: this.form.controls.tituloCtrl.value,
       idCohorte: this.form.controls.idCohorteCtrl.value,
-      idautores: this.form.controls.idAutoresCtrl.value,
-      idtecnicatura: this.form.controls.idtecnicaturasCtrl.value,
-      paginas: this.form.controls.paginasCtrl.value,
-     
-     
+      idAutores: this.form.controls.idAutoresCtrl.value,
+      idtecnicaturas: this.form.controls.idtecnicaturasCtrl.value,
+      paginas: this.form.controls.paginasCtrl.value
      
     }
-    this.servicioProyecto.post(proyecto).subscribe({
+    forkJoin({
+      proyecto: this.servicioProyecto.post(proyecto),
+      archivo: this.servicioProyecto.subirArchivo(proyecto.idproyecto, this.form.controls.fuenteDocumentoCtrl.value)
+    }).subscribe({
       next: () => {
         this.recargar.emit(true);
         this.servicioToast.create({
@@ -144,7 +156,7 @@ export class FormularioProyectoComponent implements OnInit {
         }).then(t=> t.present())
       }
     })
-    const archivo = this.form.controls.documentoCtrl.value;
+    /*const archivo = this.form.controls.documentoCtrl.value;
     this.servicioProyecto.subirArchivo(proyecto.idproyecto, archivo).subscribe({
       next: ()=>{
         console.log("Se subio el archivo");
@@ -152,7 +164,7 @@ export class FormularioProyectoComponent implements OnInit {
       error: (e) =>{
         console.error("error al subir archivo", e);
       }
-    })
+    })*/
   }
 
   private editar(){
@@ -160,8 +172,8 @@ export class FormularioProyectoComponent implements OnInit {
       idproyecto: this.form.controls.idproyectoCtrl.value,
       titulo: this.form.controls.tituloCtrl.value,
       idCohorte: this.form.controls.idCohorteCtrl.value,
-      idautores: this.form.controls.idAutoresCtrl.value,
-      idtecnicatura: this.form.controls.idtecnicaturasCtrl.value,
+      idAutores: this.form.controls.idAutoresCtrl.value,
+      idtecnicaturas: this.form.controls.idtecnicaturasCtrl.value,
       paginas: this.form.controls.paginasCtrl.value,
     }
     this.servicioProyecto.put(proyecto).subscribe({

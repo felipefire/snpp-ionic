@@ -11,27 +11,30 @@ import { Preferences } from '@capacitor/preferences';
 })
 export class SesionService {
   private url: string = "http://localhost:3000/sesion";
-  private token: string | null = null; //<button *ngIf="token !== null" ></button>
+  public token: string | null = null; 
   private timer: any;
 
   constructor(
     private http: HttpClient
   ) {
     Preferences.get({key: 'token'}).then(pref => {
-      this.token = pref.value;
+      if(pref.value != null){
+        const jwtHelper: JwtHelperService = new JwtHelperService()
+        if(!jwtHelper.isTokenExpired(pref.value)){
+          this.token = pref.value;
+          this.procesarToken(pref.value);
+        }
+      }
     }).catch(e => {
       console.error('Error al cargar token desde Preferences', e);
     })
-  }
-
-  public getToken(): string | null {
-    return this.token;
   }
 
   public iniciar(cred: Credenciales): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${this.url}/iniciar`, cred).pipe(
       tap(resp => {
         this.token = resp.token;
+        Preferences.set({key: 'token', value: resp.token});
         this.procesarToken(resp.token);
       })
     );
@@ -39,6 +42,11 @@ export class SesionService {
   private mantener(): Observable<{token: string}> {
     return this.http.post<{token: string}>(`${this.url}/manterner`, { token: this.token });
 
+  }
+
+  public cerrarSesion(){
+    this.token = null;
+    Preferences.remove({key: 'token'});
   }
 
   //en vez de localStorage.get('token') se usa Preferences.get({key: 'token'}). OBS IMPORTAR ->  import { Preferences } from '@capacitor/preferences'
@@ -52,6 +60,7 @@ export class SesionService {
         setTimeout(() => {
           this.mantener().subscribe({
             next: (resp) => {
+              console.log('Mantener sesion');
               this.token = resp.token;
               //localStorage.set('token', resp.token) -> Solo para navegadores
               Preferences.set({ // Para navegadores y APK

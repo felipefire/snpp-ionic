@@ -12,7 +12,7 @@
 <ion-content>
 
   <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
-    <ion-fab-button (click)="nuevo()">
+    <ion-fab-button (click)="nuevo()" *ngIf="servicioSesion.token != null">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -26,15 +26,20 @@
   <ion-item  button (click)="editar(proyecto)">
     <ion-note slot="start">{{proyecto.idproyecto}}</ion-note>
     <ion-label>
-      <h2>{{proyecto.idproyecto}}</h2>
-      <p>{{proyecto.titulo}} {{proyecto.titulo}} {{proyecto.idautores}}  {{proyecto.idtecnicatura}} {{proyecto.idCohorte}} </p> 
+      <h2>{{proyecto.titulo}}</h2>
+      <p>Autor: {{proyecto.nombreAutores}} {{proyecto.ApellidoAutores}} </p> 
+      <p>Cohorte: {{ proyecto.anhosdesde }} - {{ proyecto.anhoshasta }}</p>
+      <p>Tecnicatura: {{ proyecto.especialidades }}</p>
     </ion-label>
+    <ion-button slot="end" [href]="'http://localhost:3000/proyecto/'+proyecto.idproyecto+'/archivo'" target="_blank" >
+      <ion-icon slot="icon-only" name="document"></ion-icon>
+    </ion-button>
     <ion-badge color="medium" slot="end" >{{proyecto.paginas}} pag.</ion-badge>
   </ion-item>
 
   <ion-item-options>
-    <ion-item-option color="danger">
-      <ion-icon slot="icon-only" name="trash" (click)="confirmarEliminacion(proyecto)"></ion-icon>
+    <ion-item-option color="danger" (click)="confirmarEliminacion(proyecto)" *ngIf="servicioSesion.token != null">
+      <ion-icon slot="icon-only" name="trash" ></ion-icon>
     </ion-item-option>
   </ion-item-options>
 

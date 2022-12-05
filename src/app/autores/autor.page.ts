@@ -3,6 +3,7 @@ import { AlertController, IonRefresher, ToastController } from '@ionic/angular';
 import { FormularioAutorComponent } from './formulario-autor/formulario-autor.component';
 import { Autores } from '../interfaces/autores.interface';
 import { AutoresService } from '../servicios/autores.service';
+import { SesionService } from '../servicios/sesion.service';
 
 @Component({
   selector: 'app-autores',
@@ -25,7 +26,8 @@ export class AutoresPage implements OnInit {
   constructor(
     private servicioAutores: AutoresService,
     private servicioToast: ToastController,
-    private servicioAlert: AlertController
+    private servicioAlert: AlertController,
+    public servicioSesion: SesionService
   ) { }
 
   ngOnInit() {
@@ -62,7 +64,9 @@ export class AutoresPage implements OnInit {
   public editar(autor: Autores){
     this.autorSeleccionado = autor
     this.modoFormulario = 'Editar';
-    this.modalVisible = true;
+    if(this.servicioSesion.token != null){
+      this.modalVisible = true;
+    }
   }
 
   public cargarDatosEditar(){

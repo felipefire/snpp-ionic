@@ -3,6 +3,7 @@ import { AlertController, IonRefresher, ToastController } from '@ionic/angular';
 import {FormularioTecnicaturasComponent} from './formulario-tecnicaturas/formulario-tecnicaturas.component';
 import { Tecnicaturas } from '../interfaces/tecnicaturas.interface';
 import { TecnicaturasService } from '../servicios/tecnicaturas.service';
+import { SesionService } from '../servicios/sesion.service';
 
 @Component({
   selector: 'app-tecnicaturas',
@@ -24,7 +25,8 @@ export class TecnicaturasPage implements OnInit {
   constructor(
     private servicioTecnicaturas: TecnicaturasService,
     private servicioToast: ToastController,
-    private servicioAlert: AlertController
+    private servicioAlert: AlertController,
+    public servicioSesion: SesionService
   ) { }
 
   ngOnInit() {
@@ -62,13 +64,15 @@ export class TecnicaturasPage implements OnInit {
   public editar(tecnicaturas: Tecnicaturas) {
     this.tecnicaturasSeleccionado = tecnicaturas;
     this.modoFormulario = 'Editar';
-    this.modalVisible = true;
+    if(this.servicioSesion.token !=null){
+      this.modalVisible = true;
+    }
   }
 
   public cargarDatosEditar() {
     if (this.modoFormulario === 'Editar') {
       this.formularioTecnicaturas.modo = this.modoFormulario;
-      this.formularioTecnicaturas.form.controls.idtecnicaturaCtrl.setValue(this.tecnicaturasSeleccionado.idtecnicatura);
+      this.formularioTecnicaturas.form.controls.idtecnicaturaCtrl.setValue(this.tecnicaturasSeleccionado.idtecnicaturas);
       this.formularioTecnicaturas.form.controls.especialidadesCtrl.setValue(this.tecnicaturasSeleccionado.especialidades);
 
 
@@ -79,7 +83,7 @@ export class TecnicaturasPage implements OnInit {
     this.servicioAlert.create({
       header: 'Confirmar eliminación',
       subHeader: '¿Realmente desea eliminar la Tecnicatura?',
-      message: `${tecnicaturas.idtecnicatura} - ${tecnicaturas.especialidades} `,
+      message: `${tecnicaturas.idtecnicaturas} - ${tecnicaturas.especialidades} `,
       buttons: [
         {
           text: 'Cancelar',

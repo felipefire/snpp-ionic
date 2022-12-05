@@ -23,8 +23,8 @@
 
     <ion-item fill="outline" class="item-espaciado">
       <ion-label position="floating">Tecnicatura:</ion-label>
-      <ion-select formControlName="idtecnicaturasCtrl">
-        <ion-select-option *ngFor="let tecnicatura of listaTecnicaturas" [value]="tecnicatura.idtecnicatura">{{tecnicatura.especialidades}}</ion-select-option>
+      <ion-select formControlName="idtecnicaturasCtrl" class="select">
+        <ion-select-option *ngFor="let tecnicatura of listaTecnicaturas" [value]="tecnicatura.idtecnicaturas">{{tecnicatura.especialidades}}</ion-select-option>
       </ion-select>
       <ion-note slot="error" *ngIf="form.controls.idtecnicaturasCtrl.touched">Ingrese Tecnicatura</ion-note>
     </ion-item>
@@ -32,7 +32,7 @@
     <ion-item fill="outline" class="item-espaciado">
       <ion-label position="floating">Cohorte:</ion-label>
       <ion-select formControlName="idCohorteCtrl">
-        <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.idCohorte">{{cohorte.idCohorte}} {{cohorte.anhosdesde}} {{cohorte.anhoshasta}}</ion-select-option>
+        <ion-select-option *ngFor="let cohorte of listaCohorte" [value]="cohorte.idcohorte">{{cohorte.anhosdesde}} - {{cohorte.anhoshasta}}</ion-select-option>
       </ion-select>
       <ion-note slot="error" *ngIf="form.controls.idCohorteCtrl.touched">Ingrese Cohorte</ion-note>
     </ion-item>
@@ -44,7 +44,7 @@
     </ion-item>
 
     <ion-item fill="outline">
-      <input type="file" placeholder="Ingresar..." formControlName="documentoCtrl">
+      <input type="file" placeholder="Ingresar..." accept="application/pdf" formControlName="documentoCtrl" (change)="onFileChange($event)">
       
     </ion-item>
     

@@ -12,7 +12,7 @@
 <ion-content>
 
   <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
-    <ion-fab-button (click)="nuevo()">
+    <ion-fab-button (click)="nuevo()" *ngIf="servicioSesion.token != null">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -26,15 +26,14 @@
   <ion-item  button (click)="editar(autor)">
     <ion-note slot="start">{{autor.idAutores}}</ion-note>
     <ion-label>
-      <h2>{{autor.idAutores}}</h2>
-      <p>{{autor.nombreAutores}} {{autor.ApellidoAutores}}</p>
+      <h2>{{autor.nombreAutores}} {{autor.ApellidoAutores}}</h2>
       
     </ion-label>
     <ion-badge color="medium" slot="end" >{{autor.ciAutores}} C.I.</ion-badge>
   </ion-item>
 
   <ion-item-options>
-    <ion-item-option color="danger">
+    <ion-item-option color="danger" *ngIf="servicioSesion.token != null">
       <ion-icon slot="icon-only" name="trash" (click)="confirmarEliminacion(autor)"></ion-icon>
     </ion-item-option>
   </ion-item-options>
